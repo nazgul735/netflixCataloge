@@ -3,7 +3,9 @@ import { Review } from "./models/Reviews";
 export const resolvers = {
   Query: {
     hello: () => "Hello world",
-    getMovies: async () => await Movie.find({}).limit(10)
+    getMovies: async (_, { limit, offset}) => await Movie.find({})
+    .limit(limit)
+    .skip(offset)
   },
   Mutation: {
     createReview: async (_, { rating, review, movieID}) => {
