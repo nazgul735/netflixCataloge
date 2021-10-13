@@ -12,6 +12,7 @@ export const typeDefs = gql`
     movieID: String!
   }
   type Movie{
+    id: ID!,
     title: String!,
     year: String!,
     genres: [String]!,
