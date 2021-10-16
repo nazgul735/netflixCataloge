@@ -4,6 +4,11 @@
 
 MongoDB må lastes ned og kjøres lokalt under utvikling, og da vil databasen kjøres på mongodb://127.0.0.1:27017. Se https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/ for hvordan installere MongoDB på Mac, og https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/ for hvordan installere det på Windows.
 
+## Bytte mellom databaser
+
+Per nå er appen koblet til databasen som ligger i VM-en. For å bruke lokal database, må du bare endre variabelen, `mongoDBURL` i `config.js` filen til å peke på linken til den lokal databasen i stedet. Den er lagt til som kommentar i config filen nå.
+Husk at du må koble på vpn for å kunne bruke databasen fra VM-en.
+
 ## Sette opp lokal database
 
 1. Etter å ha lastet ned mongoDB, kjør den lokale databasen ved å bruke kommandoen `mongosh`.
