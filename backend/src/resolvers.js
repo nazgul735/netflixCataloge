@@ -4,13 +4,17 @@ export const resolvers = {
   Query: {
     hello: () => "Hello world",
     //Query for returning reviews for a given movie
-    getReviewsByMovie: async (_,movieID) =>{
-      const reviews = Review.find({movieID})
+    getReviewsByMovie: async (_,{movieID}) =>{
+      try{
+      const reviews = Review.find({movieID: movieID})
       //Throw error if reviews not found
-      if(!reviews){
+      if(!reviews.length>0){
+        //Throw custom error if reviews not found
         throw new Error("Reviews for given movie not found")
       }
-      return reviews
+      return reviews}
+      // Throw default error from graphql if caught
+      catch(error){throw new Error(error)}
     },
     //offset blir limit*side-1
     //Query for getting limited set of all movies based on offset and limit
