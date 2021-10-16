@@ -1,15 +1,14 @@
 import './App.css';
-import {useQuery} from "@apollo/client";
-import {HELLO} from "./api/graphqlQueries"
+import Movies from './pages/Movies';
+
 function App() {
-  const { loading, data } = useQuery(HELLO);
-  if (loading) return <p>Loading...</p>;
-  console.log(data)
-  return (
+  return(
     <div className="App">
-      <h1>{data.hello} from backend!</h1>
+      <Movies/>
     </div>
-  );
+
+  )
+  
 }
 
 export default App;

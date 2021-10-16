@@ -1,3 +1,39 @@
+.grid-container {
+  display: grid;
+  grid-gap: 40px;
+  justify-content: center;
+  grid-template-columns: auto auto auto;
+  grid-template-areas:
+    "title title title"
+    "underitle underitle underitle"
+    "pagination pagination pagination";
+}
+
+.grid-item {
+}
+
+svg {
+  align-content: center;
+  justify-self: center;
+}
+
+.title {
+  grid-area: title;
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.underTitle {
+  grid-area: underitle;
+  color: #d81f27;
+}
+
+.pagination {
+  grid-area: pagination;
+  justify-self: center;
+}
+
 .App {
   text-align: center;
 }
@@ -5,6 +41,14 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+body {
+  background-color: white;
+}
+
+h1 {
+  color: whitesmoke;
 }
 
 @media (prefers-reduced-motion: no-preference) {
