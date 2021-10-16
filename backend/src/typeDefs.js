@@ -3,6 +3,7 @@ import { gql } from "graphql-tag";
 export const typeDefs = gql`
   type Query {
     hello: String!
+    getReviewsByMovie(movieID:String!): Review!
     getMovies(limit: Int!, offset: Int!): MovieResponse!
     getFilteredMoviesByYearAndGenre(fromYear:Int!, toYear:Int!, genre:String!, limit:Int!, offset: Int!): MovieResponse!
     getFilteredMoviesByYear(fromYear:Int!, toYear:Int!,limit:Int!, offset: Int!): MovieResponse!
