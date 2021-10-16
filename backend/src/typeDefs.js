@@ -9,6 +9,7 @@ export const typeDefs = gql`
     getFilteredMoviesByYear(fromYear:Int!, toYear:Int!,limit:Int!, offset: Int!): MovieResponse!
     getFilteredMoviesByGenre(genre:String!, limit:Int!, offset: Int!): MovieResponse!
   }
+
   type Review{
     id: ID!
     rating: Int!
