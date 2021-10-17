@@ -20,4 +20,12 @@ const startServer = async () => {
     console.log(`🚀  Server ready at ${url}`);
   });
 };
+module.export={
+  Query: {
+    ...postResolvers.Query
+  },
+  Mutation: {
+    ...usersResolvers.Mutation
+  }
+};
 startServer();

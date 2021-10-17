@@ -4,7 +4,6 @@ const gql =require('graphql-tag');
 const mongoose=require('mongoose');
 
 const typeDefs =require('./src/typeDefs');
-const { MONGODB } =require('./config.js');
 
 export const typeDefs = gql`
   type Query {
@@ -51,5 +50,8 @@ export const typeDefs = gql`
     password: String!
     confirmPassword: String!
     email: String!
+  }
+  type Mutation {
+    register(registerInput: RegisterInput): User!
   }
 `;
