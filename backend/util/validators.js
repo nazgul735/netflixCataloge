@@ -28,16 +28,17 @@ module.exports.validateRegisterInput = (
     };
   };
 
-  module.exports.validateRegisterInput ? (username, password) =>{
-      const errors = {};
-      if(username.trim()===''){
-          errors.username = 'Username must not be empty';
-      }
-      if(password.trim()===''){
-        errors.username = 'Password must not be empty';
+  module.exports.validateLoginInput = (username, password) => {
+    const errors = {};
+    if (username.trim() === '') {
+      errors.username = 'Username needs value';
     }
-  }
+    if (password.trim() === '') {
+      errors.password = 'Password needs value';
+    }
+  
   return {
     errors,
     valid: Object.keys(errors).length < 1
   };
+};

@@ -1,97 +1,95 @@
-const User = require('../..(models/User');
-const bcrtpy =require('bcryptjs');
-const jwt = require('jsonwebtoken');
+import User, { findOne } from '../models/User';
+import { compare, hash } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
 const{UserInputError}=require
 
-const {validateRegisterInput} = require('../../util/validators')
-const {SECRETE_KEY} = require('../config');
-const User = require('../models/User');
+import { validateRegisterInput } from '../../util/validators';
+import { SECRET_KEY } from './config';
+import User from '../models/User';
 
 function generateToken(user){
-    return jwt.sign(
+    return sign(
         {
           id: user.id,
           email: user.email,
           username: user.username
         },
-        SECRETE_KEY,
+        SECRET_KEY,
         { expiresIn: '1h' }
       );
     }
-    module.exports = {
-        Mutation: {
-          async login(_, { username, password }) {
-            const { errors, valid } = validateLoginInput(username, password);
-      
-            if (!valid) {
-              throw new UserInputError('Errors', { errors });
-            }
-      
-            const user = await User.findOne({ username });
-      
-            if (!user) {
-              errors.general = 'User not found';
-              throw new UserInputError('User not found', { errors });
-            }
-      
-            const match = await bcrypt.compare(password, user.password);
-            if (!match) {
-              errors.general = 'Wrong crendetials';
-              throw new UserInputError('Wrong crendetials', { errors });
-            }
-      
-            const token = generateToken(user);
+    export const Mutation = {
+    async login(_, { username, password }) {
+        const { errors, valid } = validateLoginInput(username, password);
 
-            return {
-              ...user._doc,
-              id: user._id,
-              token
-            };
-        },
-        async register(
-            _,
-            {
-                registerInput:{username, email, password, confirmPassword}
-            }
-            ){
-                const { valid, errors } = validateRegisterInput(
-                    username,
-                    email,
-                    password,
-                    confirmPassword
-                  );
-                if(!valid){
-                    throw new UserInputError('Errors', {errors})
-                }
-                const user=await User.findOne({username});
-        register(_, {registerInput: {username, email, password, confirmPassword}
-        },
-         context, 
-         info)
-         {
-            password = await bcrypt.hash(password, 12);
-            if(user){
-                throw new UserInputError('username is taken', {
-                errors: {
-                    username: 'This username is taken'
-                }
-
-            })
+        if (!valid) {
+            throw new UserInputError('Errors', { errors });
         }
+
+        const user = await findOne({ username });
+
+        if (!user) {
+            errors.general = 'User not found';
+            throw new UserInputError('User not found', { errors });
+        }
+
+        const match = await compare(password, user.password);
+        if (!match) {
+            errors.general = 'Wrong crendetials';
+            throw new UserInputError('Wrong crendetials', { errors });
+        }
+
+        const token = generateToken(user);
+
+        return {
+            ...user._doc,
+            id: user._id,
+            token
+        };
+    },
+    async register(
+        _,
+        {
+            registerInput: { username, email, password, confirmPassword }
+        }
+    ) {
+        const { valid, errors } = validateRegisterInput(
+            username,
+            email,
+            password,
+            confirmPassword
+        );
+        if (!valid) {
+            throw new UserInputError('Errors', { errors });
+        }
+        const user = await findOne({ username });
+        register(_, {
+            registerInput: { username, email, password, confirmPassword }
+        },
+            context,
+            info);
+        {
+            password = await hash(password, 12);
+            if (user) {
+                throw new UserInputError('username is taken', {
+                    errors: {
+                        username: 'This username is taken'
+                    }
+                });
+            }
 
 
             const newUser = new User({
-                email, 
+                email,
                 username,
                 password,
                 createdAt: new Date().toISOString()
             });
             const res = await newUser.save();
-            const token=generalToken(user);
+            const token = generalToken(user);
 
 
-           
+
         };
     }
-  }
 };
