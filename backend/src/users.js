@@ -7,49 +7,59 @@ const {validateRegisterInput} = require('../../util/validators')
 const {SECRETE_KEY} = require('../config');
 const User = require('../models/User');
 
-function generalToken(user){
+function generateToken(user){
     return jwt.sign(
         {
           id: user.id,
           email: user.email,
           username: user.username
         },
-        SECRET_KEY,
+        SECRETE_KEY,
         { expiresIn: '1h' }
       );
     }
-module.exports = {
-    Mutation: {
-        async login(_, {username, password}){
-            const {errors, valid}=validateRegisterInput(username,password);
-            if(!valid){
-                throw new UserInputError('Errors', {errors});
+    module.exports = {
+        Mutation: {
+          async login(_, { username, password }) {
+            const { errors, valid } = validateLoginInput(username, password);
+      
+            if (!valid) {
+              throw new UserInputError('Errors', { errors });
             }
-            const user=await User.findOne({username});
-            if(!user){
-                errors.general='User not found';
-                throw new UserInputError('User not found', {errors});
-
+      
+            const user = await User.findOne({ username });
+      
+            if (!user) {
+              errors.general = 'User not found';
+              throw new UserInputError('User not found', { errors });
             }
-            const match =await bcrypt.compare(password, user.password);
-            if(!match){
-                errors.general='Wrong credential';
-                throw new UserInputError('Wrong credentials', {errors});
+      
+            const match = await bcrypt.compare(password, user.password);
+            if (!match) {
+              errors.general = 'Wrong crendetials';
+              throw new UserInputError('Wrong crendetials', { errors });
             }
-            const token=generalToken(user);
+      
+            const token = generateToken(user);
 
             return {
-                ...user._doc,
-                id: user._id,
-                token
+              ...user._doc,
+              id: user._id,
+              token
             };
         },
         async register(
+            _,
             {
                 registerInput:{username, email, password, confirmPassword}
             }
             ){
-                const {valid, errors}=validateRegisterInput()
+                const { valid, errors } = validateRegisterInput(
+                    username,
+                    email,
+                    password,
+                    confirmPassword
+                  );
                 if(!valid){
                     throw new UserInputError('Errors', {errors})
                 }
@@ -79,12 +89,9 @@ module.exports = {
             const res = await newUser.save();
             const token=generalToken(user);
 
-            //const token = jwt.sign({
-              //  id: ReadableStream.is,
-                //email: res.username
-            //}, SECRETE_KEY, {expiresIn: '1h'});
 
            
-        }
+        };
     }
+  }
 };
