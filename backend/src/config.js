@@ -1,5 +1,2 @@
-module.exports={
-    MONGODB:
-    ''
-    SECRETE_KEY: 'some secrete key'
-}
+export const MONGODB = '';
+export const SECRETE_KEY = 'some secrete key';
