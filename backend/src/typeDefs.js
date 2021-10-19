@@ -1,6 +1,6 @@
 import { gql } from "graphql-tag";
 
-module.exports = gql`
+export const typeDefs = gql`
   type Query {
     hello: String!
     getReviewsByMovie(movieID:String!): Review!
@@ -14,7 +14,7 @@ module.exports = gql`
   type User{
     id: ID!
     email: String!
-    token: Strign!
+    token: String!
     username: String!
     createdAt: String!
   }
@@ -44,10 +44,11 @@ module.exports = gql`
     
 
   }
-  input RegisterInput{
+
+  input RegisterInput {
     username: String!
     password: String!
     confirmPassword: String!
     email: String!
   }
-`
+`;
