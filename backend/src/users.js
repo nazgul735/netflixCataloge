@@ -1,11 +1,10 @@
-import User, { findOne } from '../models/User';
-import { compare, hash } from 'bcryptjs';
+/*import User, { findOne } from '/models/User';
 import { sign } from 'jsonwebtoken';
 const{UserInputError}=require
 
-import { validateRegisterInput } from '../../util/validators';
+import { validateRegisterInput } from '../util/validators';
 import { SECRET_KEY } from './config';
-import User from '../models/User';
+import User from './models/User';
 
 function generateToken(user){
     return sign(
@@ -18,78 +17,81 @@ function generateToken(user){
         { expiresIn: '1h' }
       );
     }
-    export const Mutation = {
-    async login(_, { username, password }) {
-        const { errors, valid } = validateLoginInput(username, password);
-
-        if (!valid) {
-            throw new UserInputError('Errors', { errors });
-        }
-
-        const user = await findOne({ username });
-
-        if (!user) {
-            errors.general = 'User not found';
-            throw new UserInputError('User not found', { errors });
-        }
-
-        const match = await compare(password, user.password);
-        if (!match) {
-            errors.general = 'Wrong crendetials';
-            throw new UserInputError('Wrong crendetials', { errors });
-        }
-
-        const token = generateToken(user);
-
-        return {
-            ...user._doc,
-            id: user._id,
-            token
-        };
-    },
-    async register(
-        _,
-        {
-            registerInput: { username, email, password, confirmPassword }
-        }
-    ) {
-        const { valid, errors } = validateRegisterInput(
-            username,
-            email,
-            password,
-            confirmPassword
-        );
-        if (!valid) {
-            throw new UserInputError('Errors', { errors });
-        }
-        const user = await findOne({ username });
-        register(_, {
-            registerInput: { username, email, password, confirmPassword }
-        },
-            context,
-            info);
-        {
-            password = await hash(password, 12);
-            if (user) {
-                throw new UserInputError('username is taken', {
-                    errors: {
-                        username: 'This username is taken'
-                    }
-                });
+    module.exports = {
+        Mutation: {
+          async login(_, { username, password }) {
+            const { errors, valid } = validateLoginInput(username, password);
+      
+            if (!valid) {
+              throw new UserInputError('Errors', { errors });
             }
-
-
+      
+            const user = await User.findOne({ username });
+      
+            if (!user) {
+              errors.general = 'User not found';
+              throw new UserInputError('User not found', { errors });
+            }
+      
+            const match = await bcrypt.compare(password, user.password);
+            if (!match) {
+              errors.general = 'Wrong crendetials';
+              throw new UserInputError('Wrong crendetials', { errors });
+            }
+      
+            const token = generateToken(user);
+      
+            return {
+              ...user._doc,
+              id: user._id,
+              token
+            };
+          },
+          async register(
+            _,
+            {
+              registerInput: { username, email, password, confirmPassword }
+            }
+          ) {
+            // Validate user data
+            const { valid, errors } = validateRegisterInput(
+              username,
+              email,
+              password,
+              confirmPassword
+            );
+            if (!valid) {
+              throw new UserInputError('Errors', { errors });
+            }
+            // TODO: Make sure user doesnt already exist
+            const user = await User.findOne({ username });
+            if (user) {
+              throw new UserInputError('Username is taken', {
+                errors: {
+                  username: 'This username is taken'
+                }
+              });
+            }
+            // hash password and create an auth token
+            password = await bcrypt.hash(password, 12);
+      
             const newUser = new User({
-                email,
-                username,
-                password,
-                createdAt: new Date().toISOString()
+              email,
+              username,
+              password,
+              createdAt: new Date().toISOString()
             });
+      
             const res = await newUser.save();
-            const token = generalToken(user);
-
-
-
-        };
-    }
-};
+      
+            const token = generateToken(res);
+      
+            return {
+              ...res._doc,
+              id: res._id,
+              token
+            };
+          }
+        }
+      };*/
+      

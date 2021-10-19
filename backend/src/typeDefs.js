@@ -1,11 +1,6 @@
 import { gql } from "graphql-tag";
-const {ApolloServer} = require('apollo-server');
-const gql =require('graphql-tag'); 
-const mongoose=require('mongoose');
 
-const typeDefs =require('./src/typeDefs');
-
-export const typeDefs = gql`
+module.exports = gql`
   type Query {
     hello: String!
     getReviewsByMovie(movieID:String!): Review!
@@ -13,6 +8,8 @@ export const typeDefs = gql`
     getFilteredMoviesByYearAndGenre(fromYear:Int!, toYear:Int!, genre:String!, limit:Int!, offset: Int!): MovieResponse!
     getFilteredMoviesByYear(fromYear:Int!, toYear:Int!,limit:Int!, offset: Int!): MovieResponse!
     getFilteredMoviesByGenre(genre:String!, limit:Int!, offset: Int!): MovieResponse!
+    login(username:String!, password: String!): User!
+
   }
   type User{
     id: ID!
@@ -44,6 +41,8 @@ export const typeDefs = gql`
   type Mutation {
     createReview(rating: Int!, review: String, movieID:String!): Review!
     register(registrerInput: RegisterInput): User!
+    
+
   }
   input RegisterInput{
     username: String!
@@ -51,8 +50,4 @@ export const typeDefs = gql`
     confirmPassword: String!
     email: String!
   }
-  type Mutation {
-    register(registerInput: RegisterInput): User!
-    login(username:String!, password: String!): User!
-  }
-`;
+`

@@ -1,12 +1,15 @@
 import { ApolloServer} from "apollo-server";
+import mongoose from "mongoose";
+
 import { resolvers } from "./resolvers";
 import { typeDefs } from "./typeDefs";
-import mongoose from "mongoose";
-import {mongoDBURL} from "../config.js";
+import {mongoDBURL} from "./config";
+
 const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    context: ({ req }) => ({ req, pubsub }) 
   });
 
 
@@ -14,18 +17,12 @@ const startServer = async () => {
   .then(()=> {
     console.log("Database connected!");
     return server.listen({port:4000});
-    }
-    )
+    })
   .then(({ url }) => {
     console.log(`🚀  Server ready at ${url}`);
-  });
-};
-module.export={
-  Query: {
-    ...postResolvers.Query
-  },
-  Mutation: {
-    ...usersResolvers.Mutation
-  }
-};
+  })
+  .catch(err => {
+    console.error(err)
+})
 startServer();
+}
