@@ -1,6 +1,6 @@
-import { gql } from "graphql-tag";
+const { gql } = require('apollo-server');
 
-module.exports = gql`
+export const typeDefs = gql`
   type Query {
     hello: String!
     getReviewsByMovie(movieID:String!): Review!

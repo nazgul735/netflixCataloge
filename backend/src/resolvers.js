@@ -1,12 +1,12 @@
 import { Movie } from "./models/Movies";
 import { Review } from "./models/Reviews";
-import { validateRegisterInput } from '../util/validators';
+import { validateRegisterInput, validateLoginInput} from './../util/validators';
 import { SECRET_KEY } from './config';
 import User from './models/Users';
 
-import {bcrypt}  from 'bcryptjs';
-import { UserInputError } from 'apollo-server';
-import {jwt} from 'jsonwebtoken';
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { UserInputError } = require('apollo-server')
 
 
 /*module.exports = {
@@ -30,7 +30,7 @@ function generateToken(user){
     );
   }
 
-module.exports= {
+export const resolvers= {
   Mutation: {
       //Mutation for creating a new review
       createReview: async (_, { rating, review, movieID}) => {
@@ -44,12 +44,12 @@ module.exports= {
         return reviewDocument;
       }
     },
-    async register(
+      register: async function(
       _,
       {
         registerInput: { username, email, password, confirmPassword }
       }
-    ) {
+    ){ 
       // Validate user data
       const { valid, errors } = validateRegisterInput(
         username,
@@ -93,7 +93,7 @@ module.exports= {
     hello: () => "Hello world",
     //kode her
 
-    async login(_, { username, password }) {
+    login: async function(_, { username, password }) {
       const { errors, valid } = validateLoginInput(username, password);
 
       if (!valid) {
@@ -122,7 +122,7 @@ module.exports= {
       }
     },
     //Query for returning reviews for a given movie
-    getReviewsByMovie: async (_,{movieID}) =>{
+    getReviewsByMovie: async function(_,{movieID}){
       try{
       const reviews = Review.find({movieID: movieID});
       //Throw error if reviews not found
