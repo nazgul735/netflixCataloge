@@ -2,11 +2,12 @@ import { Movie }  from "./models/Movies";
 import { Review } from "./models/Reviews";
 import { User }   from "./models/Users";
 import { validateRegisterInput } from '../util/validators';
+import { validateRegisterInput, validateLoginInput} from './../util/validators';
 import { SECRET_KEY } from './config';
 
-import {bcrypt}  from 'bcryptjs';
-import { UserInputError } from 'apollo-server';
-import {jwt} from 'jsonwebtoken';
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { UserInputError } = require('apollo-server')
 
 
 
@@ -46,7 +47,6 @@ export const resolvers = {
     },
     register: async (_, { username, email, password, confirmPassword }) => {
     // Validate user data
-    try {
       const { valid, errors } = validateRegisterInput(
         username,
         email,
@@ -123,7 +123,7 @@ export const resolvers = {
       } catch(err) {throw new Error(err);}
     },
     //Query for returning reviews for a given movie
-    getReviewsByMovie: async (_,{movieID}) =>{
+    getReviewsByMovie: async function(_,{movieID}){
       try{
       const reviews = Review.find({movieID: movieID});
       //Throw error if reviews not found

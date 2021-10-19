@@ -28,7 +28,7 @@ export function validateRegisterInput(
     };
   }
 
-  export function   validateLoginInput(username, password) {
+  module.exports.validateLoginInput=(username, password) =>{
     const errors = {};
     if (username.trim() === '') {
       errors.username = 'Username needs value';
