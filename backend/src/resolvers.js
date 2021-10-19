@@ -3,6 +3,29 @@ import { Review } from "./models/Reviews";
 export const resolvers = {
   Query: {
     hello: () => "Hello world",
+    getMoviesBySearchstring: async function (_,{searchstring, limit,offset}) {
+      const regex = new RegExp("^" + searchstring, "i");
+      try {
+        const allSearchedMovies = await Movie.find({
+          title: {
+            $regex: regex
+          }
+        });
+        if(allSearchedMovies.length < 1) {
+          throw new Error('No movies found with the given search string.');
+        }
+        const searchedMovies = await Movie.find({
+          title: {
+            $regex: regex
+          }
+        })
+        .limit(limit)
+        .skip(offset)
+        const pages = Math.ceil(allSearchedMovies.length/limit)
+        return {movies:searchedMovies, pages};
+      }
+      catch(err){throw new Error(err);}
+    },
     //Query for returning reviews for a given movie
     getReviewsByMovie: async (_,{movieID}) =>{
       try{
@@ -112,4 +135,3 @@ export const resolvers = {
     }
   }
 }
-
