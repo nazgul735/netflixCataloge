@@ -5,13 +5,14 @@ export const typeDefs = gql`
     hello: String!
     getMoviesBySearchstring(searchstring: String!, limit: Int!, offset:Int!): MovieResponse!
     getReviewsByMovie(movieID:String!): Review!
-    getMovies(limit: Int!, offset: Int!): MovieResponse!
+    getMovies(title: String, genre: String, fromYear: Int, toYear: Int, limit: Int!, offset: Int!): MovieResponse!
     getFilteredMoviesByYearAndGenre(fromYear:Int!, toYear:Int!, genre:String!, limit:Int!, offset: Int!): MovieResponse!
     getFilteredMoviesByYear(fromYear:Int!, toYear:Int!,limit:Int!, offset: Int!): MovieResponse!
     getFilteredMoviesByGenre(genre:String!, limit:Int!, offset: Int!): MovieResponse!
     login(username:String!, password: String!): User!
 
   }
+
   type User{
     id: ID!
     email: String!

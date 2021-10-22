@@ -20,6 +20,24 @@ function generateToken(user){
       { expiresIn: '1h' }
     );
   }
+// Util function for creating query object used for filtering movies
+function createQuery(title, genre, fromYear, toYear) {
+  let query = {};
+  if (title) {
+    query.title= {$regex:title, $options:"i"};
+    console.log(query)
+  }
+  if (genre) {
+    query["genres"] = genre;
+  }
+  if (fromYear && toYear) {
+    query["year"] = {
+      $lte: toYear.toString(),
+      $gte: fromYear.toString()
+    };
+  }
+  return query;
+}
 
 export const resolvers = {
   Mutation: {
@@ -123,85 +141,20 @@ export const resolvers = {
       // Throw default error from graphql if caught
       catch(error){throw new Error(error)}
     },
-    //offset blir limit*side-1
-    //Query for getting limited set of all movies based on offset and limit
-    getMovies: async function (_, { limit, offset}){
+    // Query for retrieving movies, either whole list or filtered based on what inputs are given
+    getMovies: async function(_, {title, genre, fromYear, toYear, limit, offset}) {
       try {
-        const movies= await Movie.find({})
-        .limit(limit)
-        .skip(offset)
-        const allMovies = await Movie.find({})
-        const pages = Math.floor(allMovies.length/limit)+1
-        return {movies, pages};
-      } catch (err) {
-        throw new Error(err);
+        let query = createQuery(title, genre, fromYear, toYear);
+        const allMovies = await Movie.find(query);
+        // Disable offset if search on title is given
+        if(title){
+          offset=0;
+        }
+        const movies = await Movie.find(query).limit(limit).skip(offset);
+        const pages = Math.floor(allMovies.length/limit)+1;
+        return {movies:movies, pages};
       }
-    },
-  //Query for retrieving movies only filtered by year
-    getFilteredMoviesByYear: async function(_, {fromYear, toYear, limit, offset}) {
-      try {
-        toYear+=1
-        const allFilteredMovies = await Movie.find({
-          year: {
-            $gte: fromYear.toString(),
-            $lt: toYear.toString()
-          }
-        })
-        const filteredMovies= await Movie.find({
-          year: {
-            $gte: fromYear.toString(),
-            $lt: toYear.toString()
-          }
-        })
-        .limit(limit)
-        .skip(offset)
-        const pages = Math.floor(allFilteredMovies.length/limit)+1
-        return {movies:filteredMovies, pages}}
-        catch(err){throw new Error(err)}
-    },
-    //Query for retrieving movies only filtered by genre
-    getFilteredMoviesByGenre: async function(_, {genre, limit, offset}) {
-      try{
-        const allFilteredMovies = await Movie.find({
-        genres: genre
-      })
-      const filteredMovies= await Movie.find({
-        genres: genre
-      })
-      .limit(limit)
-      .skip(offset)
-      const pages = Math.floor(allFilteredMovies.length/limit)+1
-      return {movies:filteredMovies, pages}}
       catch(err){throw new Error(err)}
-    },
-    //Query for retrieving movies filtered by both year and genre
-    getFilteredMoviesByYearAndGenre: async function(_, {fromYear, toYear, genre, limit, offset}) {
-      toYear+=1
-      // Try find the filtered movies
-      try{
-        const allFilteredMovies = await Movie.find({
-          year: {
-            $gte: fromYear.toString(),
-            $lt: toYear.toString()
-          },
-          genres: genre
-        })
-        const filteredMovies= await Movie.find({
-          year: {
-            $gte: fromYear.toString(),
-            $lt: toYear.toString()
-          },
-          genres: genre
-        })
-        .limit(limit)
-        .skip(offset)
-        const pages = Math.floor(allFilteredMovies.length/limit)+1
-        return {movies:filteredMovies, pages}
-      }
-      //Return graphql error if unable to query
-      catch(err){
-        throw new Error(err)
-      }
     }
   }
 }
