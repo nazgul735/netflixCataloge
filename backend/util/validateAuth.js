@@ -1,6 +1,6 @@
 import { AuthenticationError } from 'apollo-server';
 import jwt from 'jsonwebtoken';
-import { SECRET_KEY  } from "./../config.js";
+import { SECRET_KEY  } from "../src/config.js";
 
  const validateAuth = ({req}) => {
     const authHeader = req.headers.authorization

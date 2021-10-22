@@ -1,12 +1,15 @@
 import { Movie }  from "./models/Movies.js";
 import { Review } from "./models/Reviews.js";
-import { User }   from "./models/Users.js";
-import { validateRegisterInput, validateLoginInput} from './../util/validators.js';
+import User from "./models/Users.js";
+import { validateRegisterInput} from '../util/validators.js';
 import { SECRET_KEY } from './config.js';
 import validateAuth from "../util/validateAuth.js";
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const { UserInputError } = require('apollo-server')
+//const bcrypt = require('bcryptjs');
+import bcrypt from "bcryptjs";
+//const jwt = require('jsonwebtoken');
+import jwt from "jsonwebtoken";
+//const { UserInputError } = require('apollo-server')
+import {UserInputError} from "apollo-server";
 
 function generateToken(user){
   return jwt.sign(
