@@ -5,7 +5,7 @@ stages:
 build:
   image: node:latest
   before_script:
-    - cd prosjekt-2
+    - cd frontend
     - npm install
   stage: build
   script:
