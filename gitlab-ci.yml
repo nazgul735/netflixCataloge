@@ -14,7 +14,7 @@ build:
 test:
   image: node:latest
   before_script:
-    - cd prosjekt-3
+    - cd prosjekt-3/backend
     - npm install
   stage: test
   script:
