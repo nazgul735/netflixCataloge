@@ -1,4 +1,4 @@
-import { gql } from "graphql-tag";
+import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
   type Query {
@@ -9,8 +9,16 @@ export const typeDefs = gql`
     getFilteredMoviesByYearAndGenre(fromYear:Int!, toYear:Int!, genre:String!, limit:Int!, offset: Int!): MovieResponse!
     getFilteredMoviesByYear(fromYear:Int!, toYear:Int!,limit:Int!, offset: Int!): MovieResponse!
     getFilteredMoviesByGenre(genre:String!, limit:Int!, offset: Int!): MovieResponse!
-  }
+    login(username:String!, password: String!): User!
 
+  }
+  type User{
+    id: ID!
+    email: String!
+    token: String!
+    username: String!
+    createdAt: String!
+  }
   type Review{
     id: ID!
     rating: Int!
@@ -33,5 +41,15 @@ export const typeDefs = gql`
   }
   type Mutation {
     createReview(rating: Int!, review: String, movieID:String!): Review!
+    register(username: String!,password: String!,confirmPassword: String!,email: String!): User!
+    
+
+  }
+
+  input RegisterInput {
+    username: String!
+    password: String!
+    confirmPassword: String!
+    email: String!
   }
 `;
