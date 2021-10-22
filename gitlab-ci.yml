@@ -1,12 +1,11 @@
 stages:
   - build
   - test
-  - deploy
 build:
   image: node:latest
   before_script:
-    - npm install
     - npm run build
+    - npm install
   stage: build
   script:
     - npm run build
