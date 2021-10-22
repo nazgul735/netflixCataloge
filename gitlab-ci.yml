@@ -5,7 +5,6 @@ stages:
 build:
   image: node:latest
   before_script:
-    - cd prosjekt-3
     - npm install
   stage: build
   script:
