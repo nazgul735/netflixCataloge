@@ -6,6 +6,7 @@ build:
   image: node:latest
   before_script:
     - npm install
+    - npm run build
   stage: build
   script:
     - npm run build
