@@ -1,0 +1,26 @@
+stages:
+  - build
+  - test
+  - deploy
+build:
+  image: node:latest
+  before_script:
+    - cd prosjekt-3
+    - npm install
+  stage: build
+  script:
+    - npm run build
+
+test:
+  image: node:latest
+  before_script:
+    - cd prosjekt-3
+    - npm install
+  stage: test
+  script:
+    - npm run test
+
+deploy:
+  stage: deploy
+  script:
+    - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
