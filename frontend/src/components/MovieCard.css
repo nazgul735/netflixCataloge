@@ -1,5 +1,0 @@
-.card-grid{
-    display: grid;
-    grid-template-columns: repeat(2,5fr);
-    grid-row-gap: 1rem;
-}

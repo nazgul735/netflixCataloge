@@ -1,15 +1,17 @@
-import { Movie }  from "./models/Movies";
+import { Movie } from "./models/Movies";
 import { Review } from "./models/Reviews";
-import { User }   from "./models/Users";
-import { validateRegisterInput, validateLoginInput} from './../util/validators';
-import { SECRET_KEY } from './config';
+import { User } from "./models/Users";
+import {
+  validateRegisterInput,
+  validateLoginInput,
+} from "./../util/validators";
+import { SECRET_KEY } from "./config";
 
-import bcrypt from'bcryptjs'; 
-import jwt from 'jsonwebtoken';
-import { UserInputError } from 'apollo-server';
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { UserInputError } from "apollo-server";
 
-
-function generateToken(user){
+function generateToken(user) {
   return jwt.sign(
       {
         id: user.id,
@@ -20,22 +22,42 @@ function generateToken(user){
       { expiresIn: '1h' }
     );
   }
+// Util function for creating query object used for filtering movies
+function createQuery(title, genre, fromYear, toYear) {
+  let query = {};
+  if (title) {
+    query.title= {$regex:title, $options:"i"};
+    console.log(query)
+  }
+  if (genre) {
+    query["genres"] = genre;
+  }
+  if (fromYear && toYear) {
+    query["year"] = {
+      $lte: toYear.toString(),
+      $gte: fromYear.toString()
+    };
+  }
+  return query;
+}
 
 export const resolvers = {
   Mutation: {
     //Mutation for creating a new review
-    createReview: async (_, { rating, review, movieID}) => {
+    createReview: async (_, { rating, review, movieID }) => {
       // If rating or movieID is not given, throw error
-      if(!(rating|| movieID)){
-        throw new Error('ID of the movie that you try to create review for has to be given and rating can not be null.')
+      if (!(rating || movieID)) {
+        throw new Error(
+          "ID of the movie that you try to create review for has to be given and rating can not be null."
+        );
       }
       // Else, create review and save to database
-      const reviewDocument = new Review({ rating,review,movieID });
+      const reviewDocument = new Review({ rating, review, movieID });
       await reviewDocument.save();
       return reviewDocument;
     },
-    register: async (_,{ username, email, password, confirmPassword }) => {
-    // Validate user data
+    register: async (_, { username, email, password, confirmPassword }) => {
+      // Validate user data
       try {
         const { valid, errors } = validateRegisterInput(
           username,
@@ -44,14 +66,14 @@ export const resolvers = {
           confirmPassword
         );
         if (!valid) {
-          throw new UserInputError('Errors', { errors });
+          throw new UserInputError("Errors", { errors });
         }
         const user = await User.findOne({ username });
         if (user) {
-          throw new UserInputError('Username is taken', {
+          throw new UserInputError("Username is taken", {
             errors: {
-              username: 'This username is taken'
-            }
+              username: "This username is taken",
+            },
           });
         }
         // hash password and create an auth token
@@ -61,7 +83,7 @@ export const resolvers = {
           email,
           username,
           password,
-          createdAt: new Date().toISOString()
+          createdAt: new Date().toISOString(),
         });
 
         const res = await newUser.save();
@@ -71,33 +93,50 @@ export const resolvers = {
         return {
           ...res._doc,
           id: res._id,
-          token
+          token,
         };
+      } catch (err) {
+        throw new Error(err);
       }
-      catch (err) { throw new Error(err) }
-    }
+    },
   },
   Query: {
     hello: () => "Hello world",
+
+    getMovieByID: async function (_, { movieID }) {
+      try {
+        const movie = await Movie.findById({ _id: movieID });
+
+        if (!movie) {
+          throw new Error("Movie does not exist");
+        }
+
+        return movie;
+      } catch (error) {
+        // Throw default error from graphql if caught
+        throw new Error(error);
+      }
+    },
+
     login: async (_, { username, password }) => {
       try {
         const { errors, valid } = validateLoginInput(username, password);
 
         if (!valid) {
-          throw new UserInputError('Errors', { errors });
+          throw new UserInputError("Errors", { errors });
         }
 
         const user = await User.findOne({ username });
 
         if (!user) {
-          errors.general = 'User not found';
-          throw new UserInputError('User not found', { errors });
+          errors.general = "User not found";
+          throw new UserInputError("User not found", { errors });
         }
 
         const match = await bcrypt.compare(password, user.password);
         if (!match) {
-          errors.general = 'Wrong credentials';
-          throw new UserInputError('Wrong credentials', { errors });
+          errors.general = "Wrong credentials";
+          throw new UserInputError("Wrong credentials", { errors });
         }
 
         const token = generateToken(user);
@@ -105,103 +144,42 @@ export const resolvers = {
         return {
           ...user._doc,
           id: user._id,
-          token
-        }
-      } catch(err) {throw new Error(err);}
-    },
-    //Query for returning reviews for a given movie
-    getReviewsByMovie: async function(_,{movieID}){
-      try{
-      const reviews = Review.find({movieID: movieID});
-      //Throw error if reviews not found
-      if(!reviews.length>0){
-        //Throw custom error if reviews not found
-        throw new Error("Reviews for given movie not found");
-      }
-      return reviews
-    }
-      // Throw default error from graphql if caught
-      catch(error){throw new Error(error)}
-    },
-    //offset blir limit*side-1
-    //Query for getting limited set of all movies based on offset and limit
-    getMovies: async function (_, { limit, offset}){
-      try {
-        const movies= await Movie.find({})
-        .limit(limit)
-        .skip(offset)
-        const allMovies = await Movie.find({})
-        const pages = Math.floor(allMovies.length/limit)+1
-        return {movies, pages};
+          token,
+        };
       } catch (err) {
         throw new Error(err);
       }
     },
-  //Query for retrieving movies only filtered by year
-    getFilteredMoviesByYear: async function(_, {fromYear, toYear, limit, offset}) {
+    //Query for returning reviews for a given movie
+    getReviewsByMovie: async function (_, { movieID }) {
       try {
-        toYear+=1
-        const allFilteredMovies = await Movie.find({
-          year: {
-            $gte: fromYear.toString(),
-            $lt: toYear.toString()
-          }
-        })
-        const filteredMovies= await Movie.find({
-          year: {
-            $gte: fromYear.toString(),
-            $lt: toYear.toString()
-          }
-        })
-        .limit(limit)
-        .skip(offset)
-        const pages = Math.floor(allFilteredMovies.length/limit)+1
-        return {movies:filteredMovies, pages}}
-        catch(err){throw new Error(err)}
+        const reviews = await Review.find({ movieID: movieID });
+        //Throw error if reviews not found
+        
+        if (!reviews.length > 0) {
+          //Throw custom error if reviews not found
+          throw new Error("Reviews for given movie not found");
+        }
+        return reviews;
+      } catch (error) {
+        // Throw default error from graphql if caught
+        throw new Error(error);
+      }
     },
-    //Query for retrieving movies only filtered by genre
-    getFilteredMoviesByGenre: async function(_, {genre, limit, offset}) {
-      try{
-        const allFilteredMovies = await Movie.find({
-        genres: genre
-      })
-      const filteredMovies= await Movie.find({
-        genres: genre
-      })
-      .limit(limit)
-      .skip(offset)
-      const pages = Math.floor(allFilteredMovies.length/limit)+1
-      return {movies:filteredMovies, pages}}
+    // Query for retrieving movies, either whole list or filtered based on what inputs are given
+    getMovies: async function(_, {title, genre, fromYear, toYear, limit, offset}) {
+      try {
+        let query = createQuery(title, genre, fromYear, toYear);
+        const allMovies = await Movie.find(query);
+        // Disable offset if search on title is given
+        if(title){
+          offset=0;
+        }
+        const movies = await Movie.find(query).limit(limit).skip(offset);
+        const pages = Math.floor(allMovies.length/limit)+1;
+        return {movies:movies, pages};
+      }
       catch(err){throw new Error(err)}
-    },
-    //Query for retrieving movies filtered by both year and genre
-    getFilteredMoviesByYearAndGenre: async function(_, {fromYear, toYear, genre, limit, offset}) {
-      toYear+=1
-      // Try find the filtered movies
-      try{
-        const allFilteredMovies = await Movie.find({
-          year: {
-            $gte: fromYear.toString(),
-            $lt: toYear.toString()
-          },
-          genres: genre
-        })
-        const filteredMovies= await Movie.find({
-          year: {
-            $gte: fromYear.toString(),
-            $lt: toYear.toString()
-          },
-          genres: genre
-        })
-        .limit(limit)
-        .skip(offset)
-        const pages = Math.floor(allFilteredMovies.length/limit)+1
-        return {movies:filteredMovies, pages}
-      }
-      //Return graphql error if unable to query
-      catch(err){
-        throw new Error(err)
-      }
     }
   }
 }
