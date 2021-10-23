@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { gql } from 'apollo-server';
+=======
+//onst { gql } = require('apollo-server');
+import { gql } from "apollo-server";
+>>>>>>> 8dd2aee2751bc9b2f798cf2af637331d1412b598
 
 export const typeDefs = gql`
   type Query {
@@ -10,9 +15,14 @@ export const typeDefs = gql`
     getFilteredMoviesByYear(fromYear:Int!, toYear:Int!,limit:Int!, offset: Int!): MovieResponse!
     getFilteredMoviesByGenre(genre:String!, limit:Int!, offset: Int!): MovieResponse!
     login(username:String!, password: String!): User!
+<<<<<<< HEAD
 
   }
 
+=======
+
+  }
+>>>>>>> 8dd2aee2751bc9b2f798cf2af637331d1412b598
   type User{
     id: ID!
     email: String!
@@ -42,7 +52,11 @@ export const typeDefs = gql`
   }
   type Mutation {
     createReview(rating: Int!, review: String, movieID:String!): Review!
+<<<<<<< HEAD
     register(username: String!,password: String!,confirmPassword: String!,email: String!): User!
+=======
+    register(registrerInput: RegisterInput): User!
+>>>>>>> 8dd2aee2751bc9b2f798cf2af637331d1412b598
     
 
   }

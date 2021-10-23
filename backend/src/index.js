@@ -8,7 +8,10 @@ import { mongoDBURL } from "./config.js";
 const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    context:({ req }) =>{
+      return req;
+    }
   });
 
   mongoose.connect(mongoDBURL, {useNewUrlParser:true, useUnifiedTopology:true, serverSelectionTimeoutMS: 2000})
