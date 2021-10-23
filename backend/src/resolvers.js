@@ -6,7 +6,7 @@ import { SECRET_KEY } from './config.js';
 import bcrypt from'bcryptjs'; 
 import jwt from 'jsonwebtoken';
 import { UserInputError } from 'apollo-server';
-
+import validateAuth from "../util/validateAuth.js";
 
 function generateToken(user){
   return jwt.sign(
@@ -41,9 +41,10 @@ function createQuery(title, genre, fromYear, toYear) {
 export const resolvers = {
   Mutation: {
     //Mutation for creating a new review
-    createReview: async (_, { rating, review, movieID}) => {
+    createReview: async (_, { rating, review, movieID}, context) => {
+      validateAuth(context.req)
       // If rating or movieID is not given, throw error
-      if(!(rating|| movieID)){
+      if(!(rating||movieID)){
         throw new Error('ID of the movie that you try to create review for has to be given and rating can not be null.')
       }
       // Else, create review and save to database
@@ -157,5 +158,3 @@ export const resolvers = {
     }
   }
 }
-
-
