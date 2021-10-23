@@ -1,11 +1,34 @@
 import {
-    gql
-  } from "@apollo/client";
+  gql
+} from "@apollo/client";
 
 export const HELLO = gql`
   query Hello {
     hello
   }
+`;
+
+export const REVIEW = gql`
+query ReviewQuery($movieId: String!) {
+  getReviewsByMovie(movieID: $movieId) {
+    id
+    rating
+    review
+    movieID
+  }
+}
+`;
+
+
+export const SINGLE_MOVIE = gql`
+query QuerySingleMovie($movieId: String!) {
+  getMovieByID(movieID: $movieId) {
+    title
+    year
+    genres
+    actors
+  }
+}
 `;
 
 export const GET_MOVIE = gql`
