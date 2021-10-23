@@ -8,16 +8,19 @@ export const HELLO = gql`
   }
 `;
 
-export const MOVIE = gql`
-query GetMoviesQuery ($limit: Int!, $offset: Int!){
-  getMovies(limit: $limit, offset: $offset) {
+export const GET_MOVIE = gql`
+query GetMoviesQuery ($limit: Int!, $offset: Int!, $toYear: Int, $genre: String, $fromYear: Int, $title: String){
+  getMovies(limit: $limit, offset: $offset, toYear:$toYear, genre: $genre, fromYear: $fromYear, title: $title) {
     pages
     movies{
       id
       title
       posterurl
-      storyline
+      storyline,
+      genres,
+      year
     }
   }
 }
 `;
+
