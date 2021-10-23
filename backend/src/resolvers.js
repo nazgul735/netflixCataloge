@@ -1,8 +1,8 @@
-import { Movie }  from "./models/Movies";
-import { Review } from "./models/Reviews";
-import { User }   from "./models/Users";
-import { validateRegisterInput, validateLoginInput} from './../util/validators';
-import { SECRET_KEY } from './config';
+import { Movie }  from "./models/Movies.js";
+import { Review } from "./models/Reviews.js";
+import { User }   from "./models/Users.js";
+import { validateRegisterInput, validateLoginInput} from './../util/validators.js';
+import { SECRET_KEY } from './config.js';
 
 import bcrypt from'bcryptjs'; 
 import jwt from 'jsonwebtoken';
