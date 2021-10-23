@@ -42,7 +42,7 @@ export const resolvers = {
   Mutation: {
     //Mutation for creating a new review
     createReview: async (_, { rating, review, movieID}, context) => {
-      validateAuth(context.req)
+      const user = validateAuth(context);
       // If rating or movieID is not given, throw error
       if(!(rating||movieID)){
         throw new Error('ID of the movie that you try to create review for has to be given and rating can not be null.')

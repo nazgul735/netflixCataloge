@@ -12,7 +12,6 @@ const startServer = async () => {
       return req;
     }
   });
-
   mongoose.connect(mongoDBURL, {useNewUrlParser:true, useUnifiedTopology:true, serverSelectionTimeoutMS: 2000})
   .then(()=> {
     console.log("Database connected!");
