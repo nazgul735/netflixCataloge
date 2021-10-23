@@ -1,45 +1,55 @@
 <div id="top"></div>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
+
+
 
 <!-- PROJECT SHIELDS -->
-<div align="center">
-
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172)
-
-</b>
-
-[![pipeline status](https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172/badges/master/pipeline.svg)](https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172/-/pipelines)
-
-</b>
-
-[![coverage report](https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172/badges/master/coverage.svg)](https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172/-/graphs/master/charts)
-
 <!--
-*** We find these labels greatly udesful as we recieve a confirmation of status.
-*** Pipeline runs tests of the pushed branch rapidly as we push them.
-*** After the pipeline test the return is a jacoco report, available for 24h, of the coverage of the FXtests
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-</div>
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-<!-- PROJECT TITLE -->
+
+
+<!-- PROJECT LOGO -->
 <br />
 <div align="center">
-<a href="https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172">
-    <img src="docs/release2/logo.svg" alt="Logo" width="250" height="250">
+  <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3">
+    <img src="docs/logo.svg" alt="Logo" width="280" height="280">
   </a>
- <h3 align="center">Diary Group2172</h3>
-   <p align="center">
-    A project assigned in course IT1901 during the first semester of 2021.
+
+<h3 align="center">Project 3</h3>
+
+  <p align="center">
+    project_description
     <br />
-    <a href="https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172"><strong>Explore the repository »</strong></a>
+    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172/-/issues">Issues</a>
+    <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/-/issues">Issues</a>
     ·
-    <a href="https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172/-/commits/master">Commits</a>
+    <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/-/commits/master">Commits</a>
     ·
-    <a href="https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172/-/project_members">Members</a>
+    <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/-/wikis/home">Wiki</a>
   </p>
 </div>
+
+
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -59,217 +69,162 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#work-schedule-and-habits">Work schedule and habits</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
-  <p align="right">
-    <a href="#top">back to top</a>
-  </p>
+
 
 <!-- ABOUT THE PROJECT -->
-
 ## About The Project
 
-<div align="center">
-<p>
-    Architecture:
-</p>
-<a href="https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172">
-<img src="docs/release2/Architecture.png" alt="Architecture" width="450" height="450">
-</a>
-<p>
-Interface:
-</p>
-<a href="https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172">
-<img src="docs/Illustrasjon_1.jpg" alt="Illustration" width="450" height="450">
-</a>
-</div>
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-### General info:
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
 
-</br>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
--   This project creates a simple diary-application that allows the user to write diary entries, save and load them.
--   The root-folder of the project is the top level of the repository. Because of this we have combined the two README-files.
--   Above you may find two screenshots. The first, an illustration of the interface. The second one is of the architecture
 
-</br>
 
 ### Built With
 
-</br>
-
--   [Maven](https://maven.apache.org/)
+* [React.js](https://reactjs.org/)
+* [Vue.js](https://vuejs.org/)
+* [Angular](https://angular.io/)
+* [Svelte](https://svelte.dev/)
+* [Laravel](https://laravel.com)
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+* [Node.js](https://node.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
 
+
+<!-- GETTING STARTED -->
 ## Getting Started
 
-</br>
-
-### **Build Local**
-
-This is a guidance of how you may set up your project locally.
-To get a local copy up and running follow these simple steps.
-
-</br>
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-How to set up the environment to use the application and how to install them.
-
--   install mvn
-
-</br>
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
 ### Installation
 
-1. Clone the repository
-    ```sh
-    git clone https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172.git
-    ```
-2. Install mvn packages
-
-</br>
-
-### **Run Local**
-
-```
-cd diary
-mvn clean install
-mvn javafx:run -f ui/pom.xml
-```
-
-</br>
-
-### **Build Gitpod**
-
-Gitpod is configured to automatically select the diary directory and run `mvn clean install`, application will run using the following:
-
-</br>
-
-### Prerequisites
-
-Theres no need to set the environment to use the application as it is already set in Gitpod
-
-</br>
-
-### **Run Gitpod**
-
-```
-mvn javafx:run -f ui/pom.xml
-```
+1. Get a free API Key at [https://example.com](https://example.com)
+2. Clone the repo
+   ```sh
+   git clone https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Enter your API in `config.js`
+   ```js
+   const API_KEY = 'ENTER YOUR API';
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
 
 <!-- USAGE EXAMPLES -->
-
 ## Usage
 
-</br>
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-The diary sould be easly handled. Open the application and a page for the current date will occur. After writing prefered content, remember to submit the edited page in order to save it. The button for submitting is shown belove.
-</br>
-
-![Button.png](docs/release2/interface.png)
-
-</br>
-
-If reading earlier content is of choise, select the date picker on the left side of the button. It's possible to write date in the text editor with dd-mm-yyyy as form, or by clicking the right mark. The date picker is shown as a screenshot belove.
-
-</br>
-
-![Date.png](docs/release2/datepicker.png)
-
-</br>
-
-For more infomration of the project, plrease refer to the [Documentation](https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172/-/tree/master/docs)\_
-
-</br>
-
-### Userhistory
-
-As an imaginative and thoughtful person I find it necessary to collect my thoughts somewhere. That's why I need some place where I may write down my thoughts in order to look back at them in the future.
-That's why I would like a diary capable of storing my thoughts over extended periods of time, with the option to view and edit them later.
-
-</br>
-
-### Important features for the user
-
--   The submit button saves your current entry to the selected date. (Today by default)
--   Use the datepicker to edit or read the entry for a different date.
+_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- Work habits -->
 
-## Work schedule and habits
 
-Developers of this project assign standard issues and bugfixes during meetings that occur on wednesdays and fridays. Assigned issues are worked on independantly by the people assigned to the issue, with a deadline for pushing their work related to the issue.
+<!-- ROADMAP -->
+## Roadmap
 
-The wednesday and friday meetings is also the primary time where merge requests and code review is performed. However any developer can push their features at any time. For large and meaningful changes only the group meeting is allowed to approve of changes.
+- [] Feature 1
+- [] Feature 2
+- [] Feature 3
+    - [] Nested Feature
 
-Smaller features or changes can be approved by any other developer, after which they can be merge into intended branch immediatly. If such a minor change is desired to quickly be added the develop is to do the following:
-
--   Create merge request.
--   Fill inn any and all information pertinent to the merge request.
--   Request a review from another developer on gitlab.
-
-    -   The reviewer can also be pinged on the project discord server.
-
--   Await the reviewer to approve of the changes.
-
-### Working methods
-
-The prefered working method is pair-programming or pair-review before attempting to merge into a branch. Assigned pair is not fixed and based on current availability, previous work with the issue or part of the code, and general interest in the assigned change. Preferred communication style for the pair programming or review is through the project specific discord server, however review is also acceptable to perform in the gitlab repository.
-
-Information about guidelines for writing tests, compliance with checkstyle, and preferred test coverage can be found in the specific project readme within the diary directory.
+See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
 <!-- CONTACT -->
-
 ## Contact
 
-</br>
-<!-- Alphabetical first-name order -->
+Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
--   Jakob Lien - [@jlien11](https://github.com/jlien11) - jakobli@stud.ntnu.no
--   Lars Overskeid - [@Lars-over](https://github.com/Lars-over) - larsover@stud.ntnu.no
--   Sebastian Veum - [@nazgul735](https://github.com/nazgul735) - sebasv@stud.ntnu.no
--   Stian Gaustad - [@StianKGaustad](https://github.com/StianKGaustad) - stiankg@stud.ntnu.no
-
-<!-- Alphabetical last-name order -->
-<!--
--   Stian Gaustad - [@StianKGaustad](https://github.com/StianKGaustad) - stiankg@stud.ntnu.no
--   Jakob Lien - [@jlien11](https://github.com/jlien11) - jakobli@stud.ntnu.no
--   Lars Overskeid - [@Lars-over](https://github.com/Lars-over) - larsover@stud.ntnu.no
--   Sebastian Veum - [@nazgul735](https://github.com/nazgul735) - sebasv@stud.ntnu.no
--->
-</br>
-
-Project Link: [https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172](https://gitlab.stud.idi.ntnu.no/it1901/groups-2021/gr2172/gr2172)
+Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
 
 <!-- ACKNOWLEDGMENTS -->
-
 ## Acknowledgments
 
-</br>
-
-These sources have actively been used during this project. Therefor would we love to give some credit to the content creators of these. Links of the most used ons are included belove.
-
--   [Simpleexample2](https://gitlab.stud.idi.ntnu.no/it1901/simpleexample2)
--   [Simpleexample](https://gitlab.stud.idi.ntnu.no/it1901/simpleexample)
--   [ToDoList](https://gitlab.stud.idi.ntnu.no/it1901/todo-list)
--   [Docker](https://www.docker.com/)
--   [Maven](https://maven.apache.org/)
--   [GSON](https://github.com/google/gson/blob/master/UserGuide.md)
+* []()
+* []()
+* []()
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-url]: https://github.com/github_username/repo_name/network/members
+[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-url]: https://github.com/github_username/repo_name/stargazers
+[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-url]: https://github.com/github_username/repo_name/issues
+[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/linkedin_username
+[product-screenshot]: images/screenshot.png
