@@ -10,7 +10,7 @@ import { SECRET_KEY } from "./config";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { UserInputError } from "apollo-server";
-
+import {validateAuth} from "../util/validateAuth"; 
 function generateToken(user) {
   return jwt.sign(
       {
@@ -27,7 +27,6 @@ function createQuery(title, genre, fromYear, toYear) {
   let query = {};
   if (title) {
     query.title= {$regex:title, $options:"i"};
-    console.log(query)
   }
   if (genre) {
     query["genres"] = genre;
@@ -44,7 +43,9 @@ function createQuery(title, genre, fromYear, toYear) {
 export const resolvers = {
   Mutation: {
     //Mutation for creating a new review
-    createReview: async (_, { rating, review, movieID }) => {
+    createReview: async (_, { rating, review, movieID }, context) => {
+      // Validate user
+      const user = validateAuth(context);
       // If rating or movieID is not given, throw error
       if (!(rating || movieID)) {
         throw new Error(
@@ -140,7 +141,6 @@ export const resolvers = {
         }
 
         const token = generateToken(user);
-
         return {
           ...user._doc,
           id: user._id,
