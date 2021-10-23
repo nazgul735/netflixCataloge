@@ -12,7 +12,6 @@ export const typeDefs = gql`
     login(username:String!, password: String!): User!
 
   }
-
   type User{
     id: ID!
     email: String!

@@ -1,9 +1,8 @@
 import { Movie }  from "./models/Movies.js";
 import { Review } from "./models/Reviews.js";
 import { User }   from "./models/Users.js";
-import { validateRegisterInput, validateLoginInput} from './../util/validators.js';
+import {validateLoginInput} from './../util/validators.js';
 import { SECRET_KEY } from './config.js';
-
 import bcrypt from'bcryptjs'; 
 import jwt from 'jsonwebtoken';
 import { UserInputError } from 'apollo-server';
