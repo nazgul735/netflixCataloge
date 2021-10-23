@@ -39,7 +39,7 @@ function Review({ movieID }: ReviewProps) {
     console.log(error?.graphQLErrors[0].message);
 
 
-    if (error?.graphQLErrors[0].message == "Error: Reviews for given movie not found") {
+    if (error?.graphQLErrors[0]?.message == "Error: Reviews for given movie not found") {
         return (
             <div>DUMMYTEXT 😱</div>
         )
