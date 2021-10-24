@@ -8,6 +8,8 @@ import TextField from '@mui/material/TextField';
 import { FunctionComponent, useState } from "react";
 import Button from '@mui/material/Button';
 import { ErrorMessage } from "./register/Register";
+
+//Type definitions
 interface ReviewType {
     rating: number,
     review?: string,
@@ -36,15 +38,21 @@ interface CreateReviewProps {
     movieID: string
 }
 
-
+//Component handling creation of a new review 
 const CreateReview: FunctionComponent<CreateReviewProps> = ({movieID}) => {
+    // State for selected rating from the starts
     const [rating, setRating] = useState<number>(3);
+    // State for written review in text field 
     const [review, setReview] = useState<string>(""); 
+    // Define mutate function for publishing review and make a call to createReview mutation
     const [publishReview] = useMutation(CREATE_REVIEW);
+    // State for error message 
     const [errorMessage, setErrorMessage] = useState<string>("");
+    // State for conditional rendering of newly added review if review successfully added
     const [showCreatedReview, setShowCreatedReview] = useState<boolean>(false);
+    // State for the data returned when creating new review
     const [data, setData] = useState<ReviewType>({rating:1, review:"", username:""});
-    console.log(review)
+    // Labeling the rating
     const labels: { [index: string]: string } = {
         1: 'Very bad',
         2: 'Poor',
@@ -67,7 +75,8 @@ const CreateReview: FunctionComponent<CreateReviewProps> = ({movieID}) => {
      catch (error:any) {
         setErrorMessage("Something went wrong");
       }
-}
+}   
+    // Display created review if created
     const displayCreatedReview = showCreatedReview &&  <ReviewCard review={data.review} rating={data.rating} username={data.username}/> 
     return (
         <div>
@@ -106,11 +115,8 @@ const CreateReview: FunctionComponent<CreateReviewProps> = ({movieID}) => {
 
 
 function Review({ movieID }: ReviewProps) {
-
+    //Retrieve reviews for the given movie
     const { data, error, loading } = useQuery(REVIEW, { variables: { "movieId": movieID } });
-
-
-
     if (error?.graphQLErrors[0]?.message === "Error: Reviews for given movie not found") {
         return (
             <div>DUMMYTEXT 😱</div>
@@ -127,11 +133,8 @@ function Review({ movieID }: ReviewProps) {
             <div>Loading...</div>
         )
     }
-    console.log(data?.getReviewsByMovie)
+    //Return list of reviews as ReviewCard components
     const reviewsToDisplay = data?.getReviewsByMovie && data?.getReviewsByMovie.map((review: ReviewType) => <ReviewCard review={review.review} rating={review.rating} username={review.username} />);
-
-
-
     return (
         <div>
             {reviewsToDisplay}
@@ -143,19 +146,12 @@ function Review({ movieID }: ReviewProps) {
 
 
 function DetailedMovie() {
-
-
     const URLtoArray = window.location.href.split("/");
+    //Extract id from the url
     const movieID = URLtoArray[URLtoArray.length - 1];
-
-
-
-
-
+    //Fetch movie based on the given ID from the url
     const { data } = useQuery<GetMoviesQueryType>(SINGLE_MOVIE, { variables: { "movieId": movieID } })
-
- 
-
+    //Retrieve data
     const movieToDisplay = data?.getMovieByID;
     return (
         <div>
