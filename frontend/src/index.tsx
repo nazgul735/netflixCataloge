@@ -7,12 +7,33 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
+  ApolloLink,
+  createHttpLink,
 } from "@apollo/client";
 import allReducers from './redux';
 import {createStore, compose} from 'redux'; 
 import {Provider} from 'react-redux';
-const client = new ApolloClient({
+import { setContext } from '@apollo/client/link/context';
+
+// Send header to backend, set authroization to be the one stored at sessionStorage
+const authLink = setContext((_, { headers }) => {
+  // get the jwt token from sessionStorage if it exists
+  const token = sessionStorage.getItem('jwt');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? token : "",
+    }
+  }
+});
+const httpLink = createHttpLink({
   uri: 'http://localhost:4000/',
+});
+
+console.log(authLink.request)
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
 declare global {

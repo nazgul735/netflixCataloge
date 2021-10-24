@@ -26,6 +26,9 @@ export const typeDefs = gql`
     rating: Int!
     review: String
     movieID: String!
+    username: String
+    userID: String
+    createdAt: String
   }
   type MovieResponse {
     movies: [Movie]

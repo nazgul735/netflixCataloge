@@ -13,7 +13,7 @@ const styleErrorFont={
     fontFamily: "sans-serif",
     color: "#8E0505"
 }
-const ErrorMessage: React.FC<ErrorMessageProps>=({message})=>{
+export const ErrorMessage: React.FC<ErrorMessageProps>=({message})=>{
    return(
    <p style={styleErrorFont}>
        {message}

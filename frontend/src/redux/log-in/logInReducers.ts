@@ -5,7 +5,7 @@ import {
   } from "./logInTypes";
 
 // Default state set to false if jwt is either empty or does not exist 
-const defaultState = sessionStorage.getItem("jwt") === null ? (false) : (sessionStorage.getItem("jwt") != "" );
+const defaultState = sessionStorage.getItem("jwt") === null ? (false) : (sessionStorage.getItem("jwt") !== "" );
 
 export const logInReducer = (
     state = defaultState,

@@ -10,8 +10,8 @@ function ReviewCard({ rating, review, username }: IProps) {
 
     return (
         <div>
-            <p>User: {username || "guest"}</p>
-            <p>Rating: {rating}/10 </p>
+            <p>User: {username}</p>
+            <p>Rating: {rating}/5 </p>
             <p>Review: {review}</p>
         </div>
     )
