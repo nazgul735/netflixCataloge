@@ -44,6 +44,8 @@ const Register: FunctionComponent = () => {
               } });
             // Update sessionStorage with appropiate token, this means logging in the user automatically after registration
             data && (sessionStorage.jwt = data.register.token);
+            //Set username in sessionStorage, this is for displaying the username in the appbar
+            data && (sessionStorage.username = data.register.username);
             // Update redux state, logging in user
             logInDispatch(logIn()); 
             history.push("/");
