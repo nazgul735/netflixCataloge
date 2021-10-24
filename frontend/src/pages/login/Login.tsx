@@ -39,8 +39,6 @@ const Login: FunctionComponent = () => {
         if(!error && data){
             // Set token if successfully logged in 
             sessionStorage.jwt = data.login.token;
-            // Set username
-            sessionStorage.username = data.login.username; 
             //Update redux state
             dispatchLogIn(logIn()); 
             history.push("/");

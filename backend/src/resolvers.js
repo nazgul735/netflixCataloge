@@ -29,10 +29,10 @@ function createQuery(title, genre, fromYear, toYear) {
     query.title= {$regex:title, $options:"i"};
   }
   if (genre) {
-    query["genres"] = genre;
+    query.genres = genre;
   }
   if (fromYear && toYear) {
-    query["year"] = {
+    query.year = {
       $lte: toYear.toString(),
       $gte: fromYear.toString()
     };

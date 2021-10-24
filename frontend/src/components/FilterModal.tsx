@@ -56,7 +56,7 @@ export default function FilterModal({open, handleClose}:IProps) {
         "History"
       ];
 const menuItems = genres.map((genre:string)=> <MenuItem value={genre}>{genre}</MenuItem>)
-
+const updatePage = useDispatch();
 const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
     setFromYear(parseInt(event.target.value));
   };
@@ -67,6 +67,8 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
   const handleApplyFilter= ()=>{
     // Provide given search query object
       updateSearchQueries({type:"UPDATE_SEARCH_DATA", payload: {fromYear: fromYear, toYear: toYear, selectedGenre: selectedGenre}});
+    // Reset page to 1 when applying filter
+    updatePage({ type: "UPDATE_PAGE", payload: 1 });
     // Close modal after applying filters
     handleClose();
   }
