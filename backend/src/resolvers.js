@@ -43,7 +43,7 @@ function createQuery(title, genre, fromYear, toYear) {
 export const resolvers = {
   Mutation: {
     //Mutation for creating a new review
-    createReview: async (_, { rating, review, movieID }, context) => {
+    createReview: async (_, { rating, review, movieID}, context) => {
       // Validate user
       const user = validateAuth(context);
       // If rating or movieID is not given, throw error
@@ -53,7 +53,7 @@ export const resolvers = {
         );
       }
       // Else, create review and save to database
-      const reviewDocument = new Review({ rating, review, movieID });
+      const reviewDocument = new Review({ rating, review, movieID, username: user.username, createdAt: new Date().toISOString(), userID: user.id });
       await reviewDocument.save();
       return reviewDocument;
     },
@@ -159,7 +159,8 @@ export const resolvers = {
     //Query for returning reviews for a given movie
     getReviewsByMovie: async function (_, { movieID }) {
       try {
-        const reviews = await Review.find({ movieID: movieID });
+        // Sort by newest posts
+        const reviews = await Review.find({ movieID: movieID }).sort({ createdAt: -1 });
         //Throw error if reviews not found
         
         if (!reviews.length > 0) {

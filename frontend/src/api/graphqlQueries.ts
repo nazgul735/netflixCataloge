@@ -15,6 +15,8 @@ query ReviewQuery($movieId: String!) {
     rating
     review
     movieID
+    username
+    createdAt
   }
 }
 `;
@@ -69,3 +71,16 @@ mutation RegisterMutation($username: String!, $password: String!, $confirmPasswo
   }
 }
 `;
+
+export const CREATE_REVIEW = gql `
+mutation CreateReviewMutation($rating: Int!, $movieId: String!, $review: String) {
+  createReview(rating: $rating, movieID: $movieId, review: $review) {
+    id
+    review
+    rating
+    movieID
+    username
+    createdAt
+  }
+}
+`
