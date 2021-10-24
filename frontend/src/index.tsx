@@ -7,7 +7,6 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  ApolloLink,
   createHttpLink,
 } from "@apollo/client";
 import allReducers from './redux';

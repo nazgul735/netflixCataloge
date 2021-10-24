@@ -67,6 +67,14 @@ const isLoggedIn = useSelector((state:StateType)=>state.isLoggedIn);
  const closeModal = ()=>{
      setModal(false); 
  }
+ const handleRemoveFilter = ()=>{
+   // Update redux state to remove filters
+  updateSearchQuery({type:"UPDATE_SEARCH_DATA", payload: {
+    selectedGenre: undefined,
+    fromYear: undefined,
+    toYear: undefined,
+    searchString: undefined}});
+}
  const handleSearch = (e:React.ChangeEvent<HTMLInputElement>)=>{setSearchString(e.currentTarget.value)}
  useEffect(()=>{
    updateSearchQuery({type:"UPDATE_SEARCH_DATA", payload: {...prevSearchQuery, searchString:searchString}});
@@ -115,6 +123,7 @@ let logInText = isLoggedIn ? "Log out" : "Log in"
                 />
             </Search>
             <Button variant="contained" onClick={handleFilter}>Filter movies</Button>
+            <Button variant="contained" onClick={handleRemoveFilter}>Remove filter</Button>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
