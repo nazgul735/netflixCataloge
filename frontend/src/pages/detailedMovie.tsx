@@ -8,13 +8,7 @@ import TextField from '@mui/material/TextField';
 import { FunctionComponent, useState } from "react";
 import Button from '@mui/material/Button';
 import { ErrorMessage } from "./register/Register";
-
-//Type definitions
-interface ReviewType {
-    rating: number,
-    review?: string,
-    username: string
-}
+import {ReviewType, Movie} from "../type/movieTypes";
 
 interface GetMoviesQueryType {
     getMovieByID: Movie
@@ -24,16 +18,6 @@ interface ReviewProps {
     movieID: string
 }
 
-
-interface Movie {
-    id: string,
-    title: string,
-    year: string,
-    genres: string[],
-    actors: string[],
-    posterurl: string,
-    storyline: string,
-}
 interface CreateReviewProps {
     movieID: string
 }
@@ -51,7 +35,7 @@ const CreateReview: FunctionComponent<CreateReviewProps> = ({movieID}) => {
     // State for conditional rendering of newly added review if review successfully added
     const [showCreatedReview, setShowCreatedReview] = useState<boolean>(false);
     // State for the data returned when creating new review
-    const [data, setData] = useState<ReviewType>({rating:1, review:"", username:""});
+    const [createdReview, setCreatedReview] = useState<ReviewType>({rating:1, review:"", username:""});
     // Labeling the rating
     const labels: { [index: string]: string } = {
         1: 'Very bad',
@@ -68,7 +52,7 @@ const CreateReview: FunctionComponent<CreateReviewProps> = ({movieID}) => {
                 "movieId": movieID,
                 "review": review,
               } });
-              setData(data.createReview);
+              setCreatedReview(data.createReview);
               setShowCreatedReview(true); 
      
     }// If error, then invalid token is given or invalid argument. Set error message if error given
@@ -77,7 +61,7 @@ const CreateReview: FunctionComponent<CreateReviewProps> = ({movieID}) => {
       }
 }   
     // Display created review if created
-    const displayCreatedReview = showCreatedReview &&  <ReviewCard review={data.review} rating={data.rating} username={data.username}/> 
+    const displayCreatedReview = showCreatedReview &&  <ReviewCard review={createdReview.review} rating={createdReview.rating} username={createdReview.username}/> 
     return (
         <div>
         <ErrorMessage message={errorMessage}/>

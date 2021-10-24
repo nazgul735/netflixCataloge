@@ -78,8 +78,6 @@ const isLoggedIn = useSelector((state:StateType)=>state.isLoggedIn);
    if(sessionStorage.getItem("jwt")){
      //Delete stored jwt by changing it to empty string
       sessionStorage.jwt="";
-      // Delete username from sessionStorage
-      sessionStorage.username=""; 
       //Update redux state for isLoggedIn
       logOutDispatch(logOut()); 
       
