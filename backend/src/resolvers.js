@@ -66,6 +66,9 @@ export const resolvers = {
           password,
           confirmPassword
         );
+        if (!(username||email||password||confirmPassword)) {
+          throw new Error("You must provide username, email and password.");
+        }
         if (!valid) {
           throw new UserInputError("Errors", { errors });
         }
@@ -122,6 +125,9 @@ export const resolvers = {
     login: async (_, { username, password }) => {
       try {
         const { errors, valid } = validateLoginInput(username, password);
+        if (!(username && password)) {
+          throw new Error("You must provide a username and password.")
+        }
 
         if (!valid) {
           throw new UserInputError("Errors", { errors });

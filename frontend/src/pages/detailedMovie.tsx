@@ -33,13 +33,9 @@ function Review({ movieID }: ReviewProps) {
 
     const { data, error, loading } = useQuery(REVIEW, { variables: { "movieId": movieID } });
 
-    // console.log(error);
-    // console.log(loading);
-
-    console.log(error?.graphQLErrors[0].message);
 
 
-    if (error?.graphQLErrors[0]?.message == "Error: Reviews for given movie not found") {
+    if (error?.graphQLErrors[0]?.message === "Error: Reviews for given movie not found") {
         return (
             <div>DUMMYTEXT 😱</div>
         )
@@ -77,12 +73,12 @@ function DetailedMovie() {
     const movieID = URLtoArray[URLtoArray.length - 1];
 
 
-    console.log(movieID);
+
 
 
     const { data } = useQuery<GetMoviesQueryType>(SINGLE_MOVIE, { variables: { "movieId": movieID } })
 
-    console.log(data);
+ 
 
     const movieToDisplay = data?.getMovieByID;
 
