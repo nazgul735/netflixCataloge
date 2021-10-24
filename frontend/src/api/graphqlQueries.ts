@@ -47,3 +47,25 @@ query GetMoviesQuery ($limit: Int!, $offset: Int!, $toYear: Int, $genre: String,
 }
 `;
 
+export const LOGIN = gql`
+query LoginQuery($username: String!, $password: String!) {
+  login(username: $username, password: $password) {
+    id
+    email
+    token
+    username
+    createdAt
+  }
+}`;
+
+export const REGISTER = gql`
+mutation RegisterMutation($username: String!, $password: String!, $confirmPassword: String!, $email: String!) {
+  register(username: $username, password: $password, confirmPassword: $confirmPassword, email: $email) {
+    id
+    email
+    token
+    username
+    createdAt
+  }
+}
+`;

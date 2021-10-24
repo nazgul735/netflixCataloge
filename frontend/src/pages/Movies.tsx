@@ -15,7 +15,6 @@ function Movies() {
   const fromYear = useSelector((state: StateType) => state.searchQueries.searchQueries.fromYear);
   const toYear = useSelector((state: StateType) => state.searchQueries.searchQueries.toYear);
   const title = useSelector((state: StateType) => state.searchQueries.searchQueries.searchString);
-  console.log("searchData", useSelector((state: StateType) => state.searchQueries.searchQueries))
   const { data: movieData, error } = useQuery<GetMoviesQueryType>(GET_MOVIE, {
     variables: {
       "limit": limit, "offset": offset,
