@@ -11,7 +11,8 @@ import { useEffect, useState } from 'react';
 import FilterModal from './FilterModal';
 import { useDispatch, useSelector } from 'react-redux';
 import {StateType} from "../redux/StateType"; 
-
+import { useHistory } from 'react-router-dom';
+import {logOut} from "../redux/log-in/logInActions";
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -56,17 +57,53 @@ export default function Appbar() {
 const [modal, setModal] = useState<boolean>(false); 
 const [searchString, setSearchString] = useState<string|undefined>(undefined); 
 const updateSearchQuery= useDispatch(); 
+const logOutDispatch= useDispatch(); 
 const prevSearchQuery = useSelector((state:StateType) =>state.searchQueries.searchQueries);
+const isLoggedIn = useSelector((state:StateType)=>state.isLoggedIn); 
+const updatePage = useDispatch();
  const handleFilter = ()=>{
     setModal(true); 
  }
  const closeModal = ()=>{
      setModal(false); 
  }
- const handleSearch = (e:React.ChangeEvent<HTMLInputElement>)=>{setSearchString(e.currentTarget.value)}
+ const handleRemoveFilter = ()=>{
+   // Update redux state to remove filters
+  updateSearchQuery({type:"UPDATE_SEARCH_DATA", payload: {
+    selectedGenre: undefined,
+    fromYear: undefined,
+    toYear: undefined,
+    searchString: undefined}});
+}
+ const handleSearch = (e:React.ChangeEvent<HTMLInputElement>)=>{
+   setSearchString(e.currentTarget.value);
+   updatePage({ type: "UPDATE_PAGE", payload: 1 });
+  }
  useEffect(()=>{
    updateSearchQuery({type:"UPDATE_SEARCH_DATA", payload: {...prevSearchQuery, searchString:searchString}});
  },[searchString])
+ const history = useHistory();
+ const handleButtonClick = ()=>{
+   //Log out user if button is clicked and the user is logged in at the time
+   //remove jwt token and change state in redux store
+   if(sessionStorage.getItem("jwt")){
+     //Delete stored jwt by changing it to empty string
+      sessionStorage.jwt="";
+      //Delete username from sessionStorage
+      sessionStorage.username= "";
+      //Update redux state for isLoggedIn
+      logOutDispatch(logOut()); 
+      
+   }
+   // If not logged in, this means the redux state for isLoggedIn is false, then send user to log in page and
+   //handle log in from there
+   else{
+     history.push("/login");
+   }
+ }
+ // Defined the button text based on sessionStorage and state stored in redux
+let logInText = isLoggedIn ? "Log out" : "Log in"
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -91,10 +128,15 @@ const prevSearchQuery = useSelector((state:StateType) =>state.searchQueries.sear
                 />
             </Search>
             <Button variant="contained" onClick={handleFilter}>Filter movies</Button>
+            <Button variant="contained" onClick={handleRemoveFilter}>Remove filter</Button>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <Button onClick={()=>console.log("Logging in")} variant="contained">Log in</Button>
+            {sessionStorage.getItem("username") &&
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Logged in as {sessionStorage.getItem("username")}
+            </Typography>}
+            <Button onClick={handleButtonClick} variant="contained">{logInText}</Button>
           </Box>
 
         </Toolbar>

@@ -22,6 +22,18 @@ export function validateRegisterInput(
     errors.confirmPassword = 'Passwords must match';
   }
 
+<<<<<<< HEAD
+=======
+export const validateLoginInput=(username, password) =>{
+    const errors = {};
+    if (username.trim() === '') {
+      errors.username = 'Username needs value';
+    }
+    if (password.trim() === '') {
+      errors.password = 'Password needs value';
+    }
+  
+>>>>>>> 5bc86fdc35b2d744990d191e574130c9d946557e
   return {
     errors,
     valid: Object.keys(errors).length < 1
