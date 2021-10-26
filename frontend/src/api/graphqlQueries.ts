@@ -27,6 +27,8 @@ query QuerySingleMovie($movieId: String!) {
   getMovieByID(movieID: $movieId) {
     title
     year
+    storyline
+    posterurl
     genres
     actors
   }
@@ -72,7 +74,7 @@ mutation RegisterMutation($username: String!, $password: String!, $confirmPasswo
 }
 `;
 
-export const CREATE_REVIEW = gql `
+export const CREATE_REVIEW = gql`
 mutation CreateReviewMutation($rating: Int!, $movieId: String!, $review: String) {
   createReview(rating: $rating, movieID: $movieId, review: $review) {
     id
