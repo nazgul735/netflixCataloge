@@ -11,11 +11,11 @@ import './App.css';
 
 
 function App() {
-  const isLoggedIn = useSelector((state: StateType) => state.isLoggedIn);
-  //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQyZTM3OGRhZTFkZTMwODBiYjU3OCIsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InVzZXIiLCJpYXQiOjE2MzUwOTcyMzgsImV4cCI6MTYzNTEwMDgzOH0.mMfh27R5-jdWdLxS8BFx-LJyXz9cnpDFhH_WVnJ0awo
+  const isLoggedIn = useSelector((state:StateType)=>state.isLoggedIn); 
+  
   return (
     <Router>
-      <div className="App">
+      <div className="App" arial-label="app">
         <Appbar />
         <Switch>
 
