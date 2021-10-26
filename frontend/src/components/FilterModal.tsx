@@ -86,13 +86,12 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
             Filter by genre 
           </Typography>
         <FormControl fullWidth>
-
             <InputLabel id="demo-simple-select-label">Genre</InputLabel>
             <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={selectedGenre}
-            label="Genre"
+            aria-label="Selected genre"
             onChange={handleChange}
             >
                 {menuItems}
@@ -103,7 +102,7 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
           </Typography>
             <TextField
                 id="outlined-number"
-                label="From year"
+                aria-label="From year"
                 type="number"
                 InputLabelProps={{
                     shrink: true,
@@ -112,7 +111,7 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
             />
             <TextField
                 id="outlined-number"
-                label="To year"
+                aria-label="To year"
                 type="number"
                 InputLabelProps={{
                     shrink: true,

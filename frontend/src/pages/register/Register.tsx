@@ -59,7 +59,7 @@ const Register: FunctionComponent = () => {
             <TextField
             id="outlined-username-input"
             required={true}
-            label="Username"
+            aria-label="Username"
             type="text"
             style={styleInput}
             onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setUsername(e.currentTarget.value)}
@@ -67,7 +67,7 @@ const Register: FunctionComponent = () => {
             <TextField
             id="outlined-email-input"
             required={true}
-            label="E-mail"
+            aria-label="E-mail"
             type="text"
             style={styleInput}
             onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setEmail(e.currentTarget.value)}
@@ -75,7 +75,7 @@ const Register: FunctionComponent = () => {
             <TextField
             id="outlined-password-input"
             required={true}
-            label="Password"
+            aria-label="Password"
             type="password"
             autoComplete="current-password"
             style={styleInput}
@@ -84,13 +84,13 @@ const Register: FunctionComponent = () => {
             <TextField
             id="outlined-password2-input"
             required={true}
-            label="Retype password"
+            aria-label="Retype password"
             type="password"
             autoComplete="current-password"
             style={styleInput}
             onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setConfirmPassword(e.currentTarget.value)}
             />
-            <Button variant="contained" color="success" style={styleInput} onClick={(e)=>handleRegister(e)}>
+            <Button aria-label="RegisterButton" variant="contained" color="success" style={styleInput} onClick={(e)=>handleRegister(e)}>
                 Register
             </Button>
         </form>
