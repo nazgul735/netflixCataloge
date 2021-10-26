@@ -60,7 +60,7 @@ const updateSearchQuery= useDispatch();
 const logOutDispatch= useDispatch(); 
 const prevSearchQuery = useSelector((state:StateType) =>state.searchQueries.searchQueries);
 const isLoggedIn = useSelector((state:StateType)=>state.isLoggedIn); 
-
+const updatePage = useDispatch();
  const handleFilter = ()=>{
     setModal(true); 
  }
@@ -75,7 +75,10 @@ const isLoggedIn = useSelector((state:StateType)=>state.isLoggedIn);
     toYear: undefined,
     searchString: undefined}});
 }
- const handleSearch = (e:React.ChangeEvent<HTMLInputElement>)=>{setSearchString(e.currentTarget.value)}
+ const handleSearch = (e:React.ChangeEvent<HTMLInputElement>)=>{
+   setSearchString(e.currentTarget.value);
+   updatePage({ type: "UPDATE_PAGE", payload: 1 });
+  }
  useEffect(()=>{
    updateSearchQuery({type:"UPDATE_SEARCH_DATA", payload: {...prevSearchQuery, searchString:searchString}});
  },[searchString])

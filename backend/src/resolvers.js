@@ -178,10 +178,6 @@ export const resolvers = {
       try {
         let query = createQuery(title, genre, fromYear, toYear);
         const allMovies = await Movie.find(query);
-        // Disable offset if search on title is given
-        if(title){
-          offset=0;
-        }
         const movies = await Movie.find(query).limit(limit).skip(offset);
         const pages = Math.floor(allMovies.length/limit)+1;
         return {movies:movies, pages};
