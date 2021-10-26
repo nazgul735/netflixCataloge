@@ -76,14 +76,16 @@ svg {
 }
 
 body {
-  background-color: white;
+  background-color: #f9f1f0;
 }
 
 h1 {
   color: rgb(0, 0, 0);
 }
 
-
+p{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 
 @media (prefers-reduced-motion: no-preference) {

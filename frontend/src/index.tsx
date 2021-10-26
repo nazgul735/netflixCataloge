@@ -10,9 +10,10 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import allReducers from './redux';
-import {createStore, compose} from 'redux'; 
-import {Provider} from 'react-redux';
+import { createStore, compose } from 'redux';
+import { Provider } from 'react-redux';
 import { setContext } from '@apollo/client/link/context';
+
 
 // Send header to backend, set authroization to be the one stored at sessionStorage
 const authLink = setContext((_, { headers }) => {
@@ -44,7 +45,7 @@ declare global {
 const store = createStore(allReducers,
   // This is just for getting access to the redux devtool in chrome
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+)
 //Wrap the whole application inside apollo clien provider and provider from react-redux
 ReactDOM.render(
   <ApolloProvider client={client}>
@@ -56,6 +57,8 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById('root')
 );
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
