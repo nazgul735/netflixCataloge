@@ -10,6 +10,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import Button from '@mui/material/Button';
 import { ErrorMessage } from "./register/Register";
 import { ReviewType, Movie } from "../type/movieTypes";
+import { useHistory } from 'react-router-dom';
 
 
 interface GetMoviesQueryType {
@@ -149,15 +150,17 @@ const DetailedMovie: React.FC = () => {
     console.log(movieToDisplay?.posterurl);
     console.log(movieToDisplay?.title);
 
-
-
+    const history = useHistory();
+    const handleClick = () => history.push('/');
 
 
 
     return (
         <div>
-            <div className=" grid-container2 ">
+            <button className="BTN" onClick={handleClick}>Go back</button>
+            <div className="grid-container2 ">
                 <h1 className="movieName"> {movieToDisplay?.title} </h1>
+
 
                 <img className="moviePicture" src={movieToDisplay?.posterurl} alt="moviePoster"></img>
 
