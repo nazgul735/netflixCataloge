@@ -123,7 +123,7 @@ export default function Appbar() {
             component="div"
             sx={{ display: { xs: 'flex', sm: 'block' } }}
           >
-            Movie database
+            <strong>Movie database</strong>
           </Typography>
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
             <Search>
