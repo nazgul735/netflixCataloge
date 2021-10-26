@@ -56,7 +56,7 @@ const Login: FunctionComponent = () => {
             <TextField
             id="outlined-password-input"
             required={true}
-            label="Username"
+            aria-label="Username"
             type="text"
             style={styleInput}
             onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setUsername(e.currentTarget.value)}
@@ -64,13 +64,13 @@ const Login: FunctionComponent = () => {
             <TextField
             id="outlined-password-input"
             required={true}
-            label="Password"
+            aria-label="Password"
             type="password"
             autoComplete="current-password"
             style={styleInput}
             onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setPassword(e.currentTarget.value)}
             />
-            <Button variant="contained" color="success" style={styleInput} onClick={()=>handleLogin()}>
+            <Button aria-label="LoginButton" variant="contained" color="success" style={styleInput} onClick={()=>handleLogin()}>
                 Log in
             </Button>
             <Link to="/register">Or click here to register as a new user</Link>
