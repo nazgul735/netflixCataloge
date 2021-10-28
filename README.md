@@ -64,7 +64,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-This project is cerated by Alexander, Iver, Sebastian and Victoria. The final result is based of requirement from the project description. By using Apollo server, MongoDB, react and other features is the final result what you are whatcing right now. Victoria has been the chief development manager during the project.
+This project is created by Alexander, Iver, Sebastian and Victoria. The final result is based of requirement from the project description. By using Apollo server, MongoDB, react and other features is the final result what you are whatcing right now. Victoria has been the chief development manager during the project.
 <div align="right">(<a href="#top">back to top</a>)</div>
 
 
@@ -72,13 +72,21 @@ This project is cerated by Alexander, Iver, Sebastian and Victoria. The final re
 ### Built With
 
 * [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
 * [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
+* [GraphQL](https://www.apollographql.com/docs/)
 * [BMongoDB](https://www.mongodb.com)
 * [JQuery](https://jquery.com)
 * [Node.js](https://node.com)
+
+### Decisions related frontend 
+
+### Decisions related backend
+Backend is coded with typescript. As we rapidly used components within multiple elements was it necessary to make it clear what type we were dealing with when reusing an variable or component. While JavaScript works with _any_ type would TypeScript serve the specific type. 
+Both query and mutation was appropriate for this project as both registration and new posts are functions creating new data. Query, however, were, more rapidly taken in use as more getters of element already excisting appeared. In the util folder were two validator files created. The first one, validators.tsx, is created to validate registration and login to prevent illegal inputs, as well as confirming that a username exists and the password is correct. The second validator file, validateAuth, is to validate if the user has authorization to create a new reviewe of movies. 
+
+Resolvers, where queries and mutations are found, is the folder with most logics in backend. We did discuss for a while if we shoudl create a resolvers folder and divide the code. The final decission ended to not use this approache. We decided the resolvers code was just about the propper size to not be divided. Beside, it is easier to work the one folder even though a folder would challenged us.
+
+### Chosen API
 
 <div align="right">(<a href="#top">back to top</a>)</div>
 
@@ -143,7 +151,7 @@ Install correct node version through your terminal.
 The product is a movie database. By typing in the searching bar could users search for specific movies. If users aren't entirely sure which movie to look for is the filter feature a possibility. Genre, year of production and actors are all variables to choose from.  
 
 
-_For more info, please refere to [Documentation](https://example.com)_
+_For more info, please refere to [Documentation](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/docs)_
 
 <div align="right">(<a href="#top">back to top</a>)</div>
 
@@ -151,7 +159,7 @@ _For more info, please refere to [Documentation](https://example.com)_
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the TEAM 38 License. See [LICENSE](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/docs/LICENSE.txt) for more information.
 
 <div align="right">(<a href="#top">back to top</a>)</div>
 
@@ -160,9 +168,15 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Victoria - [@github_](https://github.com/) - email@stud.ntnu.no
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Alexander - [@github_](https://github.com/) - email@stud.ntnu.no
+
+Sebastian - [@github_nazgul735](https://github.com/nazgul735) - sebasv@stud.ntnu.no
+
+Iver - [@github_](https://github.com/) - email@stud.ntnu.no
+
+Project Link: [Team 38](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38)
 
 <div align="right">(<a href="#top">back to top</a>)</div>
 
@@ -172,6 +186,10 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 ## Acknowledgments
 
 * [Apollo documentation](https://www.apollographql.com/docs/)
+* [MongoDB documentation](https://docs.mongodb.com/)
+* [hidjou Github](https://github.com/hidjou/classsed-graphql-mern-apollo/tree/master)
+* []()
+* []()
 * []()
 * []()
 <div align="right">(<a href="#top">back to top</a>)</div>
