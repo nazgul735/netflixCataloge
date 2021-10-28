@@ -16,12 +16,14 @@ build:
 
 
 test:
-  stage: test
-  coverage: /backend/
-  dependencies:
-    - build
-  script:
-    - npm test
-  artifacts:
-    when: always
+    before_script:
+        - cd backend      
+    stage: test
+    coverage: /backend/
+    dependencies:
+        - build
+    script:
+        - npm test
+    artifacts:
+        when: always
 
