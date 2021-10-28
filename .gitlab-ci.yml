@@ -7,11 +7,13 @@ stages:
 
 build:
   before_script:
-    - cd backend
+  - cd backend
   stage: build
   script:
     - npm install
 test:
+before_script:
+  - cd backend
   stage: test
   coverage: /backend/
   dependencies:
