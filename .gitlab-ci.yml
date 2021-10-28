@@ -3,6 +3,7 @@ image: node:latest
 stages:
   - build
   - test
+  - deploy
 
 build:
   before_script:
@@ -14,7 +15,6 @@ build:
     expire_in: 1 days
     when: on_success
 
-
 test:
     before_script:
         - cd backend      
@@ -24,6 +24,9 @@ test:
         - build
     script:
         - npm test
+    cache:
+      paths:
+      - coverage/
     artifacts:
         when: always
 
