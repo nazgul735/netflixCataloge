@@ -3,10 +3,10 @@ image: node:latest
 stages:
   - build
   - test
-  - deploy
+
 build:
-before_script:
-    - cd backend
+  before_script:
+      - cd backend  
   stage: build
   script:
     - npm install
@@ -14,14 +14,14 @@ before_script:
     expire_in: 1 days
     when: on_success
 
+
 test:
   stage: test
-  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  coverage: /backend/
   dependencies:
     - build
   script:
-    - yarn test:ci
+    - npm test
   artifacts:
     when: always
-
 
