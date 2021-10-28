@@ -4,25 +4,24 @@ stages:
   - build
   - test
   - deploy
-
 build:
-  before_script:
+before_script:
     - cd backend
   stage: build
   script:
     - npm install
+  artifacts:
+    expire_in: 1 days
+    when: on_success
+
 test:
-before_script:
-  - cd backend
   stage: test
-  coverage: /backend/
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
   dependencies:
     - build
   script:
-    - npm test
-deploy:
-  stage: deploy
-  script:
-    - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
+    - yarn test:ci
+  artifacts:
+    when: always
 
 
