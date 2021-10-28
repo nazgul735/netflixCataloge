@@ -12,8 +12,6 @@ build:
   script:
     - npm install
 test:
-  before_script:
-    - npm install
   stage: test
   coverage: /backend/
   dependencies:
