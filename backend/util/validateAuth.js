@@ -2,13 +2,11 @@ import { AuthenticationError } from 'apollo-server';
 import jwt from 'jsonwebtoken';
 import { SECRET_KEY  } from "../src/config.js";
 
- export function validateAuth ({req}) {
-    const authHeader = req.headers.authorization
-    console.log(authHeader)
+ export function validateAuth ({context}) {
+    const authHeader = context.req.headers.authorization
     if (authHeader) {
       // Bearer ....
       const token = authHeader.split('Bearer ')[1];
-      console.log(token);
       if (token) {
         try {
           const user = jwt.verify(token, SECRET_KEY);

@@ -9,8 +9,40 @@
     "pagination pagination pagination";
 }
 
-.grid-item {
+@media only screen and (max-width: 800px) {
+  
+  .grid-container{
+    display: grid;
+    grid-gap: 40px;
+    justify-content: center;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "title title"
+    "underitle underitle"
+    "pagination pagination";
+  }
 }
+
+@media only screen and (max-width: 600px) {
+  
+  .grid-container{
+    display: grid;
+    grid-gap: 40px;
+    justify-content: center;
+    grid-template-columns: auto;
+    grid-template-areas:
+    "title"
+    "underitle"
+    "pagination";
+  }
+  .grid-item{
+    margin: 0 auto;
+    justify-content: center;
+  }
+}
+
+
+
 
 svg {
   align-content: center;
@@ -44,12 +76,17 @@ svg {
 }
 
 body {
-  background-color: white;
+  background-color: #f9f1f0;
 }
 
 h1 {
-  color: whitesmoke;
+  color: rgb(0, 0, 0);
 }
+
+p{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
