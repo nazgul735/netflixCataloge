@@ -29,4 +29,8 @@ test:
       - coverage/
     artifacts:
         when: always
+        reports:
+            junit:
+                - junit.xml
+            cobertura: coverage/cobertura-coverage.xml
 
