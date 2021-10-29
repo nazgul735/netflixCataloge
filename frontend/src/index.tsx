@@ -28,7 +28,7 @@ const authLink = setContext((_, { headers }) => {
   }
 });
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/',
+  uri: 'http://it2810-38.idi.ntnu.no:4000/',
 });
 
 const client = new ApolloClient({
