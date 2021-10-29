@@ -13,7 +13,6 @@ export const typeDefs = gql`
 
     getMovieByID(movieID: String!): Movie 
   }
-
   type User{
     id: ID!
     email: String!

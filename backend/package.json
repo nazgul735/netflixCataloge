@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Backend code for project 3 in the course, IT2810",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon --exec babel-node src/index.js",
     "seedDB": "nodemon --exec babel-node src/seedDB"
   },
@@ -16,14 +17,14 @@
     "graphql": "^15.6.1",
     "jsonwebtoken": "^8.5.1",
     "bcryptjs": "^2.4.3",
-    "mongoose": "^6.0.10",
-    "type-graphql": "^1.1.1"
+    "mongoose": "^6.0.10"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.8",
     "@babel/node": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
+    "jest": "^27.3.1",
     "nodemon": "^2.0.13"
   }
 }

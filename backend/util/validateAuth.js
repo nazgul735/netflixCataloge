@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import { SECRET_KEY  } from "../src/config.js";
 
  export const validateAuth = (contex) => {
-    const authHeader = contex.req.headers.authorization
+    const authHeader = contex?.req?.headers?.authorization
     if (authHeader) {
       // Bearer ....
       const token = authHeader
