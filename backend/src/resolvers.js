@@ -19,7 +19,7 @@ function generateToken(user) {
         username: user.username
       },
       SECRET_KEY,
-      { expiresIn: '1h' }
+      { expiresIn: '24h' }
     );
   }
 // Util function for creating query object used for filtering movies
