@@ -20,6 +20,8 @@ test:
     coverage: /backend/
     dependencies:
         - build
+    before_script:
+      - yarn add --dev jest
     script:
         - npm test
     cache:
