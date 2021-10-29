@@ -21,6 +21,7 @@ test:
     dependencies:
         - build
     before_script:
+      - cd backend
       - yarn add --dev jest
     script:
         - npm run test
