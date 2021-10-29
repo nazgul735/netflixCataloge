@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test:ci": "jest --config ./jest.config.js --collectCoverage --coverageDirectory=\"./coverage\" --ci --reporters=default --reporters=jest-junit --watchAll=false",
-    "test": "jest --config ./jest.config.js --collectCoverage --coverageDirectory=\"./coverage\" --reporters=default --reporters=jest-junit --watchAll=false",
+    "test": "jest",
     "start": "nodemon --exec babel-node src/index.js",
     "seedDB": "nodemon --exec babel-node src/seedDB"
   },
