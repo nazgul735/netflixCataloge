@@ -64,7 +64,8 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-This project is created by Alexander, Iver, Sebastian and Victoria. The final result is based of requirement from the project description. By using Apollo server, MongoDB, react and other features is the final result what you are whatcing right now. Victoria has been the chief development manager during the project.
+This project is created by Alexander, Iver, Sebastian and Victoria. The final result is based of requirement from the project description. By using Apollo server, MongoDB, react and other features is the final result what you are whatcing right now. Victoria has been the team leader during the project.
+
 <div align="right">(<a href="#top">back to top</a>)</div>
 
 
@@ -72,11 +73,11 @@ This project is created by Alexander, Iver, Sebastian and Victoria. The final re
 ### Built With
 
 * [React.js](https://reactjs.org/)
-* [Angular](https://angular.io/)
+* [TypeScript](https://www.typescriptlang.org/)
 * [GraphQL](https://www.apollographql.com/docs/)
 * [BMongoDB](https://www.mongodb.com)
-* [JQuery](https://jquery.com)
 * [Node.js](https://node.com)
+
 
 ### Decisions related frontend 
 
