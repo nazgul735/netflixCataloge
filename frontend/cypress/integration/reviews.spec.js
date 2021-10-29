@@ -36,5 +36,5 @@ describe('Review works', ()=>{
         cy.wait(500);
         cy.contains('Average movie. Reminds me of '+animal);
     });
-
+    
 });
