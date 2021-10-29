@@ -1,6 +1,6 @@
-import { Movie } from "./models/Movies.js";
-import { Review } from "./models/Reviews.js";
-import { User } from "./models/Users.js";
+import { Movie } from "./models/Movies";
+import { Review } from "./models/Reviews";
+import { User } from "./models/Users";
 import {
   validateRegisterInput,
   validateLoginInput,

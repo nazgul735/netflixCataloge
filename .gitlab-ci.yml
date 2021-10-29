@@ -15,9 +15,7 @@ build:
     expire_in: 1 days
     when: on_success
 
-test:
-    before_script:
-        - cd backend      
+test:   
     stage: test
     coverage: /backend/
     dependencies:
