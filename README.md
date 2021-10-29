@@ -81,10 +81,13 @@ This project is created by Alexander, Iver, Sebastian and Victoria. The final re
 ### Decisions related frontend 
 
 ### Decisions related backend
+</br>
 Backend is coded with typescript. As we rapidly used components within multiple elements was it necessary to make it clear what type we were dealing with when reusing an variable or component. While JavaScript works with _any_ type would TypeScript serve the specific type. 
 Both query and mutation was appropriate for this project as both registration and new posts are functions creating new data. Query, however, were, more rapidly taken in use as more getters of element already excisting appeared. In the util folder were two validator files created. The first one, validators.tsx, is created to validate registration and login to prevent illegal inputs, as well as confirming that a username exists and the password is correct. The second validator file, validateAuth, is to validate if the user has authorization to create a new reviewe of movies. 
 
-Resolvers, where queries and mutations are found, is the folder with most logics in backend. We did discuss for a while if we shoudl create a resolvers folder and divide the code. The final decission ended to not use this approache. We decided the resolvers code was just about the propper size to not be divided. Beside, it is easier to work the one folder even though a folder would challenged us.
+Resolvers, where queries and mutations are written, is the folder with most logics in backend. We did discuss for a while if we should create a resolvers folder and divide the code in seperate components. The final decission ended with not use this approache. We decided the resolvers code was just about the propper size to not be divided. Beside, it is easier to work with the one file even though a folder wouldn't challenged us slightly.
+
+
 
 ### Chosen API
 
