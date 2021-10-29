@@ -1,7 +1,7 @@
 
 import Appbar from './components/Appbar';
 import Movies from './pages/Movies';
-import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
+import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import DetailedMovie from './pages/detailedMovie';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
@@ -27,16 +27,15 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Router>
+      <HashRouter basename="/prosjekt-3/frontend">
         <div className="App" arial-label="app">
           <Appbar />
           <Switch>
-
             <Route exact path="/">
               <Movies />
             </Route>
 
-            <Route path="/detail/:movieID">
+            <Route exact path="/detail/:movieID">
               <DetailedMovie />
             </Route>
             <Route exact path="/login">
@@ -48,7 +47,7 @@ function App() {
             </Route>
           </Switch>
         </div>
-      </Router>
+      </HashRouter>
     </ThemeProvider>
   )
 

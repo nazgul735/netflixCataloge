@@ -27,15 +27,12 @@ describe('Register user + logout and login', () => {
     })
 
     it('registering a new user works', () => {
-        //makes random usernames
-        
-        
         cy.get('input').eq(1).type(username);
         cy.get('input').eq(2).type(email);
         cy.get('input').eq(3).type(password);
         cy.get('input').eq(4).type(password);
        
-        cy.contains('Register').click();
+        cy.contains('Register').click({ force: true });
         cy.wait(2000);
         cy.contains('Logged in as ' + username);
 
@@ -50,15 +47,11 @@ describe('Register user + logout and login', () => {
         cy.contains('Log in').click();
         cy.get('input').eq(1).type(username);
         cy.get('input').eq(2).type(password);
-        cy.get('input').eq(2).click()
         cy.wait(5000);
-        cy.get('button').eq(3).click();
+        cy.get('#logIn').click({force:true});
         cy.wait(5000);
-        cy.get('button').eq(3).click();
-        // cy.location('http://localhost:3000/', {timeout: 60000})
-        // .should('not.include', '/login');
+        cy.get('#logIn').click({force:true});
         cy.contains('Logged in as ' + username);
-
 
     })
 });

@@ -5,8 +5,6 @@ describe('Review works', ()=>{
 
     it('reviews exist under detailedmovie', () => {
         cy.visit('http://localhost:3000/')
-        cy.pause();
-        cy.wait(300);
         cy.contains('Learn More').first().click();
         cy.contains('great');
 
@@ -17,15 +15,13 @@ describe('Review works', ()=>{
         const animal = chance.animal();
 
         //logs in user
-        cy.wait(300);
         cy.contains('Log in').click();
-        cy.get('input').eq(1).type('1');
-        cy.get('input').eq(2).type('123');
-        cy.get('input').eq(2).click()
+        cy.get('input').eq(1).type('user');
+        cy.get('input').eq(2).type('test');
         cy.wait(1000);
-        cy.get('button').eq(3).click();
+        cy.get('#logIn').click({force:true});
         cy.wait(1000);
-        cy.get('button').eq(3).click();
+        cy.get('#logIn').click({force:true});
 
         //visits a movie
         cy.contains('Learn More').first().click();

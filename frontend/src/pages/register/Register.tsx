@@ -51,56 +51,60 @@ const Register: FunctionComponent = () => {
             // Update redux state, logging in user
             logInDispatch(logIn());
             history.push("/");
-        } catch (error: any) {
-            setErrorMessage(error?.graphQLErrors[0]?.message.split(":")[1]);
-        }
-    }
+    } catch (error:any) {
+        setErrorMessage(error?.graphQLErrors[0]?.message.split(":")[1]);
+      }
+}
+    const handleGoBack = () => history.push('/');
     return (
+        <>
+         <button className="BTN" onClick={handleGoBack}>Go back</button>
         <form className="login">
             <ErrorMessage message={errorMessage} />
             <TextField
-                id="outlined-username-input"
-                label="Username"
-                required={true}
-                aria-label="Username"
-                type="text"
-                style={styleInput}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.currentTarget.value)}
+            id="outlined-username-input"
+            required={true}
+            aria-label="Username"
+            label="Username"
+            type="text"
+            style={styleInput}
+            onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setUsername(e.currentTarget.value)}
             />
             <TextField
-                id="outlined-email-input"
-                label="E-mail"
-                required={true}
-                aria-label="E-mail"
-                type="text"
-                style={styleInput}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.currentTarget.value)}
+            id="outlined-email-input"
+            required={true}
+            aria-label="E-mail"
+            label="E-mail"
+            type="text"
+            style={styleInput}
+            onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setEmail(e.currentTarget.value)}
             />
             <TextField
-                id="outlined-password-input"
-                required={true}
-                label="Password"
-                aria-label="Password"
-                type="password"
-                autoComplete="current-password"
-                style={styleInput}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.currentTarget.value)}
+            id="outlined-password-input"
+            required={true}
+            aria-label="Password"
+            label="Retype password"
+            type="password"
+            autoComplete="current-password"
+            style={styleInput}
+            onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setPassword(e.currentTarget.value)}
             />
             <TextField
-                id="outlined-password2-input"
-                required={true}
-                label="Retype password"
-                aria-label="Retype password"
-                type="password"
-                autoComplete="current-password"
-                style={styleInput}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.currentTarget.value)}
+            id="outlined-password2-input"
+            required={true}
+            aria-label="Retype password"
+            label="Retype password"
+            type="password"
+            autoComplete="current-password"
+            style={styleInput}
+            onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setConfirmPassword(e.currentTarget.value)}
             />
             <Button aria-label="RegisterButton" variant="contained" color="success" style={styleInput} onClick={(e) => handleRegister(e)}>
                 Register
             </Button>
         </form>
-    );
+        </>
+ );
 }
 
 export default Register;
