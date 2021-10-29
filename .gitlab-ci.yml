@@ -23,7 +23,7 @@ test:
     before_script:
       - yarn add --dev jest
     script:
-        - npm test
+        - npm run test
     cache:
       paths:
       - coverage/
