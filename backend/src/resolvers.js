@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import { Movie }  from "./models/Movies.js";
-import { Review } from "./models/Reviews.js";
-import { User }   from "./models/Users.js";
-import {validateLoginInput} from './../util/validators.js';
-import { SECRET_KEY } from './config.js';
-import bcrypt from'bcryptjs'; 
-import jwt from 'jsonwebtoken';
-import { UserInputError } from 'apollo-server';
-import validateAuth from "../util/validateAuth.js";
-
-function generateToken(user){
-=======
 import { Movie } from "./models/Movies";
 import { Review } from "./models/Reviews";
 import { User } from "./models/Users";
@@ -25,7 +12,6 @@ import jwt from "jsonwebtoken";
 import { UserInputError } from "apollo-server";
 import {validateAuth} from "../util/validateAuth"; 
 function generateToken(user) {
->>>>>>> 5bc86fdc35b2d744990d191e574130c9d946557e
   return jwt.sign(
       {
         id: user.id,
@@ -58,12 +44,6 @@ export const resolvers = {
   Mutation: {
     //Mutation for creating a new review
     createReview: async (_, { rating, review, movieID}, context) => {
-<<<<<<< HEAD
-      const user = validateAuth(context);
-      // If rating or movieID is not given, throw error
-      if(!(rating||movieID)){
-        throw new Error('ID of the movie that you try to create review for has to be given and rating can not be null.')
-=======
       // Validate user
       const user = validateAuth(context);
       // If rating or movieID is not given, throw error
@@ -71,7 +51,6 @@ export const resolvers = {
         throw new Error(
           "ID of the movie that you try to create review for has to be given and rating can not be null."
         );
->>>>>>> 5bc86fdc35b2d744990d191e574130c9d946557e
       }
       // Else, create review and save to database
       const reviewDocument = new Review({ rating, review, movieID, username: user.username, createdAt: new Date().toISOString(), userID: user.id });
