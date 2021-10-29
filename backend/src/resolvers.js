@@ -11,6 +11,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { UserInputError } from "apollo-server";
 import {validateAuth} from "../util/validateAuth.js";
+import { createMovieQuery } from "../util/createMovieQuery.js"
 function generateToken(user) {
   return jwt.sign(
       {
@@ -22,23 +23,6 @@ function generateToken(user) {
       { expiresIn: '24h' }
     );
   }
-// Util function for creating query object used for filtering movies
-function createQuery(title, genre, fromYear, toYear) {
-  let query = {};
-  if (title) {
-    query.title= {$regex:title, $options:"i"};
-  }
-  if (genre) {
-    query.genres = genre;
-  }
-  if (fromYear && toYear) {
-    query.year = {
-      $lte: toYear.toString(),
-      $gte: fromYear.toString()
-    };
-  }
-  return query;
-}
 
 export const resolvers = {
   Mutation: {
@@ -176,7 +160,7 @@ export const resolvers = {
     // Query for retrieving movies, either whole list or filtered based on what inputs are given
     getMovies: async function(_, {title, genre, fromYear, toYear, limit, offset}) {
       try {
-        let query = createQuery(title, genre, fromYear, toYear);
+        let query = createMovieQuery(title, genre, fromYear, toYear);
         const allMovies = await Movie.find(query);
         const movies = await Movie.find(query).limit(limit).skip(offset);
         const pages = Math.floor(allMovies.length/limit)+1;
