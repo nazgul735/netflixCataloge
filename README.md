@@ -140,7 +140,7 @@ As a user, it is possible to view movies and choose a page to load new dataset o
 The view of movies is implemented as a react component called `Movies`. The component ensures sending the correct updated search queries and updated offset to the backend to dynamically display the correct dataset. 
 
 Finally, it is possible as a user to see a detailed view of a single movie by clicking on “Learn more” on any movie. This button redirects users to a new page displaying more details about the chosen movie and also the reviews that have been provided to the movie. This functionality is implemented by creating a new graphql query which returns the data of a single movie based on inputted movie id. This query is called on the client side in the react component, `detailedMovie` which also displays the reviews for the movie and also title, storyline, picture and actors.
-
+<div align="right">(<a href="#top">back to top</a>)</div>
 
 #### Pagination, filter and search
 
@@ -254,28 +254,49 @@ Install correct node version through your terminal.
 
 The product is a movie database. By typing in the searching bar could users search for specific movies.
 
-<div align="center">
- <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3">
-    <img src="docs/images/screenshot.png" alt="Logo" width="700" height="450">
+</br>
+
+<div align="left">
+  <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3">
+    <img src="docs\images\searching.png" alt="Searching" width="180" height="60">
   </a>
 </div>
 
+</br>
+
  If users aren't entirely sure which movie to look for is the filter feature a possibility. Genre, year of production and actors are all variables to choose from.  
 
+ </br>
+
+ <div align="left">
+  <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3">
+    <img src="docs\images\filter.png" alt="Searching" width="250" height="60">
+  </a>
+</div>
+
+</br>
+
+As a user should registration and login be offered. In upper right corner is the login appearing. Click on it to get started.   
+
+</br>
+
+ <div align="left">
+  <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3">
+    <img src="docs\images\login.png" alt="Searching" width="120" height="40">
+  </a>
+</div>
+
+</br>
 
 _For more info, please refere to [Documentation](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/docs)_
 
-
-
 <div align="right">(<a href="#top">back to top</a>)</div>
-
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the TEAM 38 License. See [LICENSE](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/docs/LICENSE.txt) for more information.
 
-<div align="right">(<a href="#top">back to top</a>)</div>
 
 <!-- CONTACT -->
 ## Contact
@@ -288,9 +309,9 @@ Sebastian - [@github_nazgul735](https://github.com/nazgul735) - sebasv@stud.ntnu
 
 Iver - [@github_](https://github.com/) - email@stud.ntnu.no
 
-Project Link: [Team 38](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38)
+Project Link: [Project3](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38)
 
-<div align="right">(<a href="#top">back to top</a>)</div>
+
 
 
 
