@@ -89,7 +89,7 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
             <InputLabel id="demo-simple-select-label">Genre</InputLabel>
             <Select
             labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            id="dropdownSelectGenre"
             value={selectedGenre}
             aria-label="Selected genre"
             onChange={handleChange}
@@ -101,7 +101,7 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
             Filter by year
           </Typography>
             <TextField
-                id="outlined-number"
+                id="fromYear"
                 aria-label="From year"
                 type="number"
                 InputLabelProps={{
@@ -110,7 +110,7 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
                 onChange={handleChangeFromYear}
             />
             <TextField
-                id="outlined-number"
+                id="toYear"
                 aria-label="To year"
                 type="number"
                 InputLabelProps={{
@@ -120,7 +120,7 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
             />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
           <Button onClick={handleClose} variant="outlined">Close filter</Button>
-          <Button onClick={()=> handleApplyFilter()} variant="outlined">Apply filter</Button>
+          <Button id="applyFilter" onClick={()=> handleApplyFilter()} variant="outlined">Apply filter</Button>
           </Box>
         </Box>
       </Modal>
