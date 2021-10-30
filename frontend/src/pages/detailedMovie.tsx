@@ -145,11 +145,6 @@ const DetailedMovie: React.FC = () => {
     //Retrieve data
     const movieToDisplay = data?.getMovieByID;
 
-    useEffect(() => { console.log(movieToDisplay?.storyline); }, [movieToDisplay]);
-
-    console.log(movieToDisplay?.posterurl);
-    console.log(movieToDisplay?.title);
-
     const history = useHistory();
     const handleClick = () => history.push('/');
 

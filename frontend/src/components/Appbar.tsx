@@ -131,13 +131,14 @@ export default function Appbar() {
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
+                id="searchMovies"
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearch(e)}
               />
             </Search>
-            <Button variant="contained" onClick={handleFilter}>Filter movies</Button>
-            <Button variant="contained" onClick={handleRemoveFilter}>Remove filter</Button>
+            <Button id="filterButton" variant="contained" onClick={handleFilter}>Filter movies</Button>
+            <Button id="removeFiltersButton" variant="contained" onClick={handleRemoveFilter}>Remove filter</Button>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
