@@ -3,7 +3,7 @@
 
 <!-- PROJECT SHIELDS -->
 <!--
-*** This layout reused from an other project Sebastian has created. 
+*** This layout reused from an other project Sebastian Veum has created. 
 *** Sebastian is the author of the original version with some inspiration from the web.
 -->
 
@@ -74,7 +74,7 @@ This project is created by Alexander, Iver, Sebastian and Victoria. The final re
 * [React.js](https://reactjs.org/)
 * [Angular](https://angular.io/)
 * [GraphQL](https://www.apollographql.com/docs/)
-* [BMongoDB](https://www.mongodb.com)
+* [MongoDB](https://www.mongodb.com)
 * [JQuery](https://jquery.com)
 * [Node.js](https://node.com)
 
