@@ -2,7 +2,8 @@ import {SearchData} from "./movies/movieTypes";
 export interface StateType{
     page: PageType,
     paginationCount: PageType,
-    searchQueries: SearchData
+    searchQueries: SearchData,
+    isLoggedIn: boolean,
 }
 
 interface PageType{

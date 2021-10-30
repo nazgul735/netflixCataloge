@@ -9,10 +9,10 @@ interface IProps {
 function ReviewCard({ rating, review, username }: IProps) {
 
     return (
-        <div>
-            <p>User: {username || "guest"}</p>
-            <p>Rating: {rating}/10 </p>
-            <p>Review: {review}</p>
+        <div className="reviewCard">
+            <p><strong>User:</strong> {username}</p>
+            <p><strong>Rating:</strong> {rating}/5 </p>
+            <p><strong>Review:</strong> {review}</p>
         </div>
     )
 

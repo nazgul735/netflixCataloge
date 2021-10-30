@@ -1,16 +1,15 @@
 import { ApolloServer} from "apollo-server";
 import mongoose from "mongoose";
-
-import { resolvers }  from "./resolvers";
-import { typeDefs }   from "./typeDefs";
+import { resolvers }  from "./resolvers.js";
+import { typeDefs }   from "./typeDefs.js";
 import { mongoDBURL } from "./config.js";
 
 const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    context: ({req})=>({req})
   });
-
   mongoose.connect(mongoDBURL, {useNewUrlParser:true, useUnifiedTopology:true, serverSelectionTimeoutMS: 2000})
   .then(()=> {
     console.log("Database connected!");
@@ -24,3 +23,4 @@ const startServer = async () => {
   });
 };
 startServer();
+

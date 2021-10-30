@@ -11,9 +11,8 @@ export const typeDefs = gql`
     getFilteredMoviesByGenre(genre:String!, limit:Int!, offset: Int!): MovieResponse!
     login(username:String!, password: String!): User!
 
-    getMovieByID(movieID: String!): Movie
+    getMovieByID(movieID: String!): Movie 
   }
-
   type User{
     id: ID!
     email: String!
@@ -26,6 +25,9 @@ export const typeDefs = gql`
     rating: Int!
     review: String
     movieID: String!
+    username: String
+    userID: String
+    createdAt: String
   }
   type MovieResponse {
     movies: [Movie]

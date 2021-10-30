@@ -17,13 +17,13 @@ interface IProps {
 
 function MovieCard({ children, picture, storyline, id }: IProps) {
 
-  console.log({ id });
+
   const history = useHistory();
   const handleClick = () => history.push('/detail/' + id);
 
 
   return (
-    <div className="grid-item">
+    <div className="grid-item" id="movies">
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"

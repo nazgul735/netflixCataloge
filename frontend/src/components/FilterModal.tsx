@@ -56,7 +56,7 @@ export default function FilterModal({open, handleClose}:IProps) {
         "History"
       ];
 const menuItems = genres.map((genre:string)=> <MenuItem value={genre}>{genre}</MenuItem>)
-
+const updatePage = useDispatch();
 const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
     setFromYear(parseInt(event.target.value));
   };
@@ -67,6 +67,8 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
   const handleApplyFilter= ()=>{
     // Provide given search query object
       updateSearchQueries({type:"UPDATE_SEARCH_DATA", payload: {fromYear: fromYear, toYear: toYear, selectedGenre: selectedGenre}});
+    // Reset page to 1 when applying filter
+    updatePage({ type: "UPDATE_PAGE", payload: 1 });
     // Close modal after applying filters
     handleClose();
   }
@@ -84,13 +86,12 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
             Filter by genre 
           </Typography>
         <FormControl fullWidth>
-
             <InputLabel id="demo-simple-select-label">Genre</InputLabel>
             <Select
             labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            id="dropdownSelectGenre"
             value={selectedGenre}
-            label="Genre"
+            aria-label="Selected genre"
             onChange={handleChange}
             >
                 {menuItems}
@@ -100,8 +101,8 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
             Filter by year
           </Typography>
             <TextField
-                id="outlined-number"
-                label="From year"
+                id="fromYear"
+                aria-label="From year"
                 type="number"
                 InputLabelProps={{
                     shrink: true,
@@ -109,8 +110,8 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
                 onChange={handleChangeFromYear}
             />
             <TextField
-                id="outlined-number"
-                label="To year"
+                id="toYear"
+                aria-label="To year"
                 type="number"
                 InputLabelProps={{
                     shrink: true,
@@ -119,7 +120,7 @@ const handleChangeFromYear= (event: React.ChangeEvent<HTMLInputElement>) => {
             />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
           <Button onClick={handleClose} variant="outlined">Close filter</Button>
-          <Button onClick={()=> handleApplyFilter()} variant="outlined">Apply filter</Button>
+          <Button id="applyFilter" onClick={()=> handleApplyFilter()} variant="outlined">Apply filter</Button>
           </Box>
         </Box>
       </Modal>

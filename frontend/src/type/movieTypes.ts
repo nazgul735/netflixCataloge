@@ -1,9 +1,9 @@
-interface Review{
-    id: string,
-    rating: number,
-    review: string,
-    movieID: string,
-  }
+export interface ReviewType{
+  rating: number,
+  review?: string,
+  username: string
+}
+
 
 export interface Movie{
     id:string,
@@ -13,7 +13,7 @@ export interface Movie{
     actors: string[],
     posterurl: string,
     storyline: string,
-    reviews?: Review[],
+    reviews?: ReviewType[],
   }
 export interface MovieResponse{
     pages: number,

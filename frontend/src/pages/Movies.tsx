@@ -4,18 +4,17 @@ import MovieCard from '../components/MovieCard';
 import Pagination from '@mui/material/Pagination';
 import { useSelector, useDispatch } from "react-redux";
 import { StateType } from "../redux/StateType";
-import { GetMoviesQueryType, Movie } from "../type/movieTypes"
+import { GetMoviesQueryType, Movie } from "../type/movieTypes";
 
 function Movies() {
   const limit = 12;
   const storedPage = useSelector((state: StateType) => state.page)
-  // Set offset based on page 
-  const offset = limit * (storedPage.payload - 1) + 1;
+  // Set offset based on page from redux
+  const offset = limit * (storedPage.payload - 1);
   const selectedGenre = useSelector((state: StateType) => state.searchQueries.searchQueries.selectedGenre);
   const fromYear = useSelector((state: StateType) => state.searchQueries.searchQueries.fromYear);
   const toYear = useSelector((state: StateType) => state.searchQueries.searchQueries.toYear);
   const title = useSelector((state: StateType) => state.searchQueries.searchQueries.searchString);
-  console.log("searchData", useSelector((state: StateType) => state.searchQueries.searchQueries))
   const { data: movieData, error } = useQuery<GetMoviesQueryType>(GET_MOVIE, {
     variables: {
       "limit": limit, "offset": offset,
@@ -24,6 +23,7 @@ function Movies() {
   });
   const updatePage = useDispatch();
   const handleChange = (event: React.ChangeEvent<any>, page: number) => {
+    //Update state in redux when new page selected
     updatePage({ type: "UPDATE_PAGE", payload: page });
   };
 
