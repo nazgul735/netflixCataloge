@@ -378,7 +378,7 @@ _For more info, please refere to [Documentation](https://gitlab.stud.idi.ntnu.no
 <!-- LICENSE -->
 ## License
 
-Distributed under the TEAM 38 License. See [LICENSE](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/docs/LICENSE.txt) for more information.
+Distributed under the TEAM 38 License. See [LICENSE](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/-/tree/master/docs/LICENSE.txt) for more information.
 
 
 <!-- CONTACT -->
