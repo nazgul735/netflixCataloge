@@ -14,7 +14,7 @@ build:
     expire_in: 1 days
     when: on_success
 
-test:   
+test:backend:   
     stage: test
     coverage: /backend/
     dependencies:
@@ -24,5 +24,13 @@ test:
       - yarn add --dev jest
     script:
         - npm run test
+
+test:frontend:   
+    stage: test
+    before_script:
+      - cd frontend
+      - npm install
+    script:
+        - npm test
 
 
