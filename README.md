@@ -8,6 +8,8 @@
 -->
 
 <!-- PROJECT LOGO -->
+  [![pipeline status](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/badges/master/pipeline.svg)](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/-/pipelines)
+
 <br />
 <div align="center">
   <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3">
