@@ -3,7 +3,6 @@ image: node:latest
 stages:
   - build
   - test
-  - deploy
 
 build:
   before_script:
@@ -25,13 +24,5 @@ test:
       - yarn add --dev jest
     script:
         - npm run test
-    cache:
-      paths:
-      - coverage/
-    artifacts:
-        when: always
-        reports:
-            junit:
-                - junit.xml
-            cobertura: coverage/cobertura-coverage.xml
+
 
