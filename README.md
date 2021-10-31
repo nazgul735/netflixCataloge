@@ -52,6 +52,20 @@
       <a href="#functionalities">Functionalities</a>
     </li>
     <li>
+      <a href="#run-tests">Run tests</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#test-backend">Test backend</a></li>
+        <li>
+          <a href="#test-frontend-cypress-and-unit">Test frontend</a>
+          <ul>
+            <li><a href="#cypress-test">Cypress test</a></li>
+            <li><a href="#unit-test">Unit test</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
@@ -199,7 +213,63 @@ As for testing for backend modules would the most essential parts be covered by 
 
 <div align="right">(<a href="#top">back to top</a>)</div>
 
+<!-- RUNNING TESTS -->
+## Run tests
 
+In order to test the application, please follow given steps.
+
+### Prerequisites
+Install correct node version through your terminal.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+* jest and cypress
+  ```sh
+  npm install 
+  ```
+### Test backend 
+
+1. Navigate to backend 
+    ```sh
+    cd backend 
+    ```
+2. Test backend 
+    ```sh
+    npm test 
+    ```
+### Test frontend (Cypress and Unit)
+
+#### Cypress test
+
+1. Navigate to frontend 
+    ```sh
+    cd frontend 
+    ```
+2. Start frontend 
+    ```sh
+    npm start 
+    ```
+3. Open an new terminal
+4. Run cypress 
+    ```sh
+    npm run cypress:open 
+    ```
+
+You may now choose which test case to run in cypress' browser
+
+#### Unit test
+
+1. Navigate to frontend 
+    ```sh
+    cd frontend 
+    ```
+2. Test frontend 
+   ```sh
+    npm test 
+    ```
+<div align="right">(<a href="#top">back to top</a>)</div>
 
 <!-- GETTING STARTED -->
 ## Getting Started
