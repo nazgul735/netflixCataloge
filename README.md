@@ -41,6 +41,9 @@
       <ul>
         <li><a href="#built-with">Built With</a></li>
         <li><a href="#technologies">Technologies</a></li>
+        <li><a href="#functionalities">Functionalities</a></li>
+        <li><a href="#design">Design</a></li>
+        <li><a href="#testing">Testing</a></li>
       </ul>
     </li>
     <li>
@@ -301,13 +304,14 @@ Distributed under the TEAM 38 License. See [LICENSE](https://gitlab.stud.idi.ntn
 <!-- CONTACT -->
 ## Contact
 
-Victoria - [@github_victorah96](https://github.com/victorah96 ) - victorah@stud.ntnu.no
-
 Alexander - [@github_aleksanderobrestad](https://github.com/aleksanderobrestad ) - aleksaob@stud.ntnu.no
+
+Iver - [@github_](https://github.com/iverbb) - iverbb@stud.ntnu.no
 
 Sebastian - [@github_nazgul735](https://github.com/nazgul735) - sebasv@stud.ntnu.no
 
-Iver - [@github_](https://github.com/) - email@stud.ntnu.no
+Victoria - [@github_victorah96](https://github.com/victorah96 ) - victorah@stud.ntnu.no
+
 
 Project Link: [Project3](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38)
 
@@ -321,10 +325,10 @@ Project Link: [Project3](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38)
 * [Apollo documentation](https://www.apollographql.com/docs/)
 * [MongoDB documentation](https://docs.mongodb.com/)
 * [hidjou Github](https://github.com/hidjou/classsed-graphql-mern-apollo/tree/master)
-* []()
-* []()
-* []()
-* []()
+* [Ben Awad](https://www.youtube.com/watch?v=YFkJGEefgU8)
+* [Cypress Documentation](https://docs.cypress.io/guides/overview/why-cypress)
+* [MUI](https://mui.com/getting-started/usage/)
+
 <div align="right">(<a href="#top">back to top</a>)</div>
 
 <br />
