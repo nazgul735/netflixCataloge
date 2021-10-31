@@ -371,7 +371,7 @@ As a user should registration and login be offered. In upper right corner is the
 
 </br>
 
-_For more info, please refere to [Documentation](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/docs)_
+_For more info, please refere to [Documentation](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/-/tree/master/docs)_
 
 <div align="right">(<a href="#top">back to top</a>)</div>
 
