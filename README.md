@@ -28,10 +28,9 @@
     ·
     <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/-/commits/master">Commits</a>
     ·
-    <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/-/wikis/home">Wiki</a>
+    <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/-/branches">Branches</a>
   </p>
 </div>
-
 
 
 <!-- TABLE OF CONTENTS -->
@@ -41,6 +40,8 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#frontend-directory">Frontend Directory</a></li>
+        <li><a href="#backend-directory">Backend Directory</a></li>
         <li><a href="#built-with">Built With</a></li>
         <li><a href="#technologies">Technologies</a></li>
         <li><a href="#functionalities">Functionalities</a></li>
@@ -99,6 +100,19 @@
 This project is created by Alexander, Iver, Sebastian and Victoria. 
 The final result is based of requirement from the project description. 
 By using Apollo server, MongoDB, react and other features is the final result what you are whatcing right now. Victoria has been the team leader during the project.
+
+### Frontend directory
+
+All frontend code is structured inside the `frontend` directory. 
+Frontend is implemented using react with typescript. Reusable elements such as appbar, filtermodal etc. are structured in the `components` directory while the components that return the pages in the application (i.e login page) are structured in the `pages` directory. 
+The chosen way to structure the code in basic components and components that return the actual pages in the application, was based on keeping the code more modular and create reusable components to follow the DRY principle. 
+
+### Backend directory 
+
+Backend is coded with JavaScript. Both query and mutation was appropriate for this project as both registration and new posts are functions creating new data. Query, however, were, more rapidly taken in use as more getters of elements already existing appeared. In the util folder were two validator files created. The first one, validators.js, is created to validate registration and login to prevent illegal inputs, as well as confirming that a username exists and the password is correct. The second validator file, validateAuth, is to validate if the user has authorization to create a new review of movies.
+
+Resolvers, where queries and mutations are written, is the file with most logics in the backend. We did discuss for a while if we should create a resolvers folder and divide the code in separate components. The final decision ended with not using this approach. We decided the resolvers code was just about the proper size to not be divided. Besides, it is easier to work with.
+
 
 </br>
 
@@ -372,7 +386,7 @@ Distributed under the TEAM 38 License. See [LICENSE](https://gitlab.stud.idi.ntn
 
 Alexander - [@github_aleksanderobrestad](https://github.com/aleksanderobrestad ) - aleksaob@stud.ntnu.no
 
-Iver - [@github_](https://github.com/iverbb) - iverbb@stud.ntnu.no
+Iver - [@github_iverbb](https://github.com/iverbb) - iverbb@stud.ntnu.no
 
 Sebastian - [@github_nazgul735](https://github.com/nazgul735) - sebasv@stud.ntnu.no
 
