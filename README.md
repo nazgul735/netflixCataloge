@@ -332,9 +332,7 @@ The product is a movie database. By typing in the searching bar could users sear
 </br>
 
 <div align="left">
-  <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3">
-    <img src="docs\images\searching.png" alt="Searching" width="180" height="60">
-  </a>
+  <img src="docs\images\searching.png" alt="Searching" width="180" height="60">
 </div>
 
 </br>
@@ -344,9 +342,7 @@ The product is a movie database. By typing in the searching bar could users sear
  </br>
 
  <div align="left">
-  <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3">
-    <img src="docs\images\filter.png" alt="Searching" width="250" height="60">
-  </a>
+  <img src="docs\images\filter.png" alt="Searching" width="250" height="60">
 </div>
 
 </br>
@@ -356,9 +352,7 @@ As a user should registration and login be offered. In upper right corner is the
 </br>
 
  <div align="left">
-  <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3">
-    <img src="docs\images\login.png" alt="Searching" width="120" height="40">
-  </a>
+  <img src="docs\images\login.png" alt="Searching" width="120" height="40">
 </div>
 
 </br>
