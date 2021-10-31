@@ -23,7 +23,7 @@ function MovieCard({ children, picture, storyline, id }: IProps) {
 
 
   return (
-    <div className="grid-item">
+    <div className="grid-item" id="movies">
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"

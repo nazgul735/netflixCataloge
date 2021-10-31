@@ -50,13 +50,17 @@ const Login: FunctionComponent = () => {
             setErrorMessage(error?.graphQLErrors[0]?.message.split(":")[1])
         }
     }
+    const handleGoBack = () => history.push('/');
     return (
+        <>
+        <button className="BTN" onClick={handleGoBack}>Go back</button>
         <form className="login">
             <ErrorMessage message={errorMessage}/>
             <TextField
             id="outlined-password-input"
             required={true}
             aria-label="Username"
+            label="Username"
             type="text"
             style={styleInput}
             onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setUsername(e.currentTarget.value)}
@@ -65,16 +69,18 @@ const Login: FunctionComponent = () => {
             id="outlined-password-input"
             required={true}
             aria-label="Password"
+            label="Password"
             type="password"
             autoComplete="current-password"
             style={styleInput}
             onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setPassword(e.currentTarget.value)}
             />
-            <Button aria-label="LoginButton" variant="contained" color="success" style={styleInput} onClick={()=>handleLogin()}>
+            <Button id="logIn" aria-label="LoginButton" variant="contained" color="success" style={styleInput} onClick={()=>handleLogin()}>
                 Log in
             </Button>
             <Link to="/register">Or click here to register as a new user</Link>
         </form>
+        </>
 
  );
 }

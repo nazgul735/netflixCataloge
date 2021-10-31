@@ -27,14 +27,18 @@ const authLink = setContext((_, { headers }) => {
     }
   }
 });
+//Constructing link
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/',
+  uri: 'http://it2810-38.idi.ntnu.no:4000/',
 });
 
+//set up for client
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
+
+//Enables using developer tools also in typescript
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION__?: typeof compose;
@@ -46,6 +50,7 @@ const store = createStore(allReducers,
   // This is just for getting access to the redux devtool in chrome
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
+
 //Wrap the whole application inside apollo clien provider and provider from react-redux
 ReactDOM.render(
   <ApolloProvider client={client}>
@@ -58,7 +63,12 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-
+//Expose redux store if app is run in cypress
+// @ts-ignore
+if (window.Cypress){
+  // @ts-ignore 
+  window.store = store
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
