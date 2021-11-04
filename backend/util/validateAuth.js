@@ -1,7 +1,7 @@
 
 import { AuthenticationError } from 'apollo-server';
 import jwt from 'jsonwebtoken';
-import { SECRET_KEY  } from "../src/config.js";
+import { SECRET_KEY  } from "../src/config.ts";
 
  export const validateAuth = (contex) => {
     const authHeader = contex?.req?.headers?.authorization
