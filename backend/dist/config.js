@@ -1,6 +1,6 @@
 "use strict";
 //"Sebasv"
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.SECRET_KEY = exports.mongoDBURL = void 0;
 //Use the link belove to connect the to the local database
 //export const mongoDBURL= "mongodb://localhost:27017/test"

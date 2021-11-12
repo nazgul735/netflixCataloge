@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app",
+  "main": "src/app",
   "scripts": {
-    "start": "ts-node src/app",
-    "dev": "ts-node-dev --respawn src/app",
+    "start": "ts-node src/app.js",
+    "dev": "ts-node-dev --respawn src/app.ts", 
     "build": "tsc",
     "test": "jest"
   },
@@ -26,6 +26,10 @@
     "@babel/core": "^7.16.0",
     "@babel/node": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
+    "@graphql-codegen/introspection": "2.1.0",
+    "@graphql-codegen/typescript": "2.3.1",
+    "@graphql-codegen/typescript-mongodb": "2.2.0",
+    "@graphql-codegen/typescript-resolvers": "2.4.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/jsonwebtoken": "^8.5.5",
     "@types/mongoose": "^5.11.97",
@@ -33,10 +37,6 @@
     "jest": "^27.3.1",
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",
-    "typescript": "^4.4.4",
-    "@graphql-codegen/typescript": "2.3.1",
-    "@graphql-codegen/typescript-mongodb": "2.2.0",
-    "@graphql-codegen/typescript-resolvers": "2.4.0",
-    "@graphql-codegen/introspection": "2.1.0"
+    "typescript": "^4.4.4"
   }
 }

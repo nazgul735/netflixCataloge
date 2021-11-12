@@ -1,9 +1,9 @@
 
 export function validateRegisterInput(
-    username:String,
-    email:String,
-    password:String,
-    confirmPassword:String
+    username:string,
+    email:string,
+    password:string,
+    confirmPassword:string
   ) {
     const errors = {username, email, password, confirmPassword};
     if (username.trim() === '') {
@@ -29,7 +29,7 @@ export function validateRegisterInput(
     };
   }
   
-  export const validateLoginInput=(username:String, password:String) =>{
+  export const validateLoginInput=(username:string, password:string) =>{
     const errors = {username, password};
     if (username.trim() === '') {
       errors.username = 'Username needs value';

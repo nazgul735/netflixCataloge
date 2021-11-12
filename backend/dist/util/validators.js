@@ -1,8 +1,8 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateLoginInput = exports.validateRegisterInput = void 0;
 function validateRegisterInput(username, email, password, confirmPassword) {
-    var errors = { username: username, email: email, password: password, confirmPassword: confirmPassword };
+    const errors = { username, email, password, confirmPassword };
     if (username.trim() === '') {
         errors.username = 'Username must not be empty';
     }
@@ -10,7 +10,7 @@ function validateRegisterInput(username, email, password, confirmPassword) {
         errors.email = 'Email must not be empty';
     }
     else {
-        var regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+        const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
         if (!email.match(regEx)) {
             errors.email = 'Email must be a valid email address';
         }
@@ -22,13 +22,13 @@ function validateRegisterInput(username, email, password, confirmPassword) {
         errors.confirmPassword = 'Passwords must match';
     }
     return {
-        errors: errors,
+        errors,
         valid: Object.keys(errors).length < 1
     };
 }
 exports.validateRegisterInput = validateRegisterInput;
-var validateLoginInput = function (username, password) {
-    var errors = { username: username, password: password };
+const validateLoginInput = (username, password) => {
+    const errors = { username, password };
     if (username.trim() === '') {
         errors.username = 'Username needs value';
     }
@@ -36,7 +36,7 @@ var validateLoginInput = function (username, password) {
         errors.password = 'Password needs value';
     }
     return {
-        errors: errors,
+        errors,
         valid: Object.keys(errors).length < 1
     };
 };

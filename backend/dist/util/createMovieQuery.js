@@ -1,9 +1,9 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.createMovieQuery = void 0;
 // Util function for creating query object used for filtering movies
 function createMovieQuery(title, genre, fromYear, toYear) {
-    var query = {};
+    let query = {};
     if (title) {
         query.title = { $regex: title, $options: "i" };
     }
