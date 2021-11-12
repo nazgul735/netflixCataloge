@@ -9,3 +9,4 @@ export const mongoDBURL= "mongodb://admin:it2810-group-38@it2810-38.idi.ntnu.no:
 
 
 export const SECRET_KEY = 'some secret key'
+

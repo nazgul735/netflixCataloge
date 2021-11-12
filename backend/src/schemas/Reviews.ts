@@ -1,7 +1,8 @@
-import mongoose  from "mongoose";
-const { Schema } = mongoose;
+import * as mongoose from 'mongoose';
+import { Schema } from "mongoose";
 
 // Set up for Review schema
+
 const ReviewSchema = new Schema({
   rating: { type: Number, required: true },
   review: String,

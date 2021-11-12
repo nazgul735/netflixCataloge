@@ -2,19 +2,16 @@ import * as mongoose from "mongoose";
 import { ApolloServer } from "apollo-server";
 import { buildSchema } from "graphql";
 import { mongoDBURL } from "./config";
+import { resolvers } from "./resolvers/resolvers";
 import { typeDefs } from "./resolvers/typeDefs";
+import {Request} from "express";
 
-const startServer = async () => {
-
-    const schema = await buildSchema({
-      resolvers: [ MovieResolver, UserResolver, ReviewResolver ],
-      emitSchemaFile: true
-    })
+const startServer = async (): Promise<void> => {
     const server = new ApolloServer({
-      schema,
+      typeDefs,
+      resolvers,
       context: ({req:Request})=>({req:Request})
     });
-  
     mongoose.connect(mongoDBURL)
     .then(()=> {
       console.log("Database connected!");
@@ -28,3 +25,4 @@ const startServer = async () => {
     });
   };
   startServer();
+  
