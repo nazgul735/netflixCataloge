@@ -1,6 +1,14 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
+export interface movieInterface {
+  title: string, 
+    genre:string, 
+    fromYear:number, 
+    toYear:number, 
+    limit:number, 
+    offset:number
+}
 //Schema for Movie instance
 const MovieSchema = new Schema({
   title: { type: String, required: true },

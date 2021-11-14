@@ -3,6 +3,12 @@ import { Schema } from "mongoose";
 
 // Set up for Review schema
 
+export interface reviewInterface {
+  rating : number,
+  review : string,
+  movieID : string,
+}
+
 const ReviewSchema = new Schema({
   rating: { type: Number, required: true },
   review: String,

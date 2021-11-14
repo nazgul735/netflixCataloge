@@ -1,19 +1,23 @@
-// Util function for creating query object used for filtering movies
-export function createMovieQuery(title: String, genre: String, fromYear: Number, toYear:Number,) {
-    let query = {};
-    if (title) {
-      (query as any).title = {$regex:title, $options:"i"};
-    }
-    if (genre) {
-      (query as any).genres = genre;
-    }
-    if (fromYear && toYear) {
-      if (fromYear > toYear) return query;
-      (query as any).year = {
-        $lte: toYear.toString(),
-        $gte: fromYear.toString()
-      };
-    }
-    return query;
+export function createMovieQuery(
+  title: string,
+  genre: string, 
+  fromYear:number, 
+  toYear:number
+  ) {
+  let query:any = {}; //not too happy about this part
+  if (title) {
+    query.title= {$regex:title, $options:"i"};
+    console.log(query)
   }
-  
+  if (genre) {
+    query["genres"] = genre;
+  }
+  if (fromYear && toYear) {
+    query["year"] = {
+      $lte: toYear.toString(),
+      $gte: fromYear.toString()
+    };
+  }
+  return query;
+}
+

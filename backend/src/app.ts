@@ -12,11 +12,11 @@ const startServer = async (): Promise<void> => {
     });
     mongoose.connect(mongoDBURL)
     .then(()=> {
-      console.log("Database connected!");
+      console.log("🚀🚀 Database connected");
       return server.listen({port:4000});
       })
     .then(({ url }) => {
-      console.log(`🚀🚀🚀  Server ready at ${url}`);
+      console.log(`💀  Server ready at ${url}`);
     })
     .catch(err => {
       console.error(err.reason)
