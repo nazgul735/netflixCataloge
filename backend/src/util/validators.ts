@@ -1,9 +1,14 @@
-
-export function validateRegisterInput(
-    username:string,
+export interface validateRegisterInputInterface{
+  username:string,
     email:string,
     password:string,
     confirmPassword:string
+}
+export function validateRegisterInput(
+    {username,
+    email,
+    password,
+    confirmPassword}:validateRegisterInputInterface
   ) {
     const errors = {username, email, password, confirmPassword};
     if (username.trim() === '') {

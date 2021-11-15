@@ -30,7 +30,7 @@ const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
         return server.listen({ port: 4000 });
     })
         .then(({ url }) => {
-        console.log(`💀  Server ready at ${url}`);
+        console.log(`Server ready at ${url}`);
     })
         .catch(err => {
         console.error(err.reason);

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateLoginInput = exports.validateRegisterInput = void 0;
-function validateRegisterInput(username, email, password, confirmPassword) {
+function validateRegisterInput({ username, email, password, confirmPassword }) {
     const errors = { username, email, password, confirmPassword };
     if (username.trim() === '') {
         errors.username = 'Username must not be empty';

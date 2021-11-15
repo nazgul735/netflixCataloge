@@ -13,13 +13,23 @@ test('Confirming legal values is valid', () => {
 });
 //validateRegisterInput
 test('Invalid register values', () => {
-    const { errors, valid } = (0, validators_1.validateRegisterInput)("", "", "password", "passwordNotEqual");
+    const { errors, valid } = (0, validators_1.validateRegisterInput)({
+        username: "",
+        email: "",
+        password: "password",
+        confirmPassword: "passwordNotEqual"
+    });
     expect(`${errors.username}`).toEqual('Username must not be empty');
     expect(`${errors.email}`).toEqual('Email must not be empty');
     expect(`${errors.confirmPassword}`).toEqual('Passwords must match');
     expect(`${valid}`).toMatch(/[false|null]/);
 });
 test('Valid register values', () => {
-    const { errors, valid } = (0, validators_1.validateRegisterInput)("username", "email@email.com", "password", "password");
+    const { errors, valid } = (0, validators_1.validateRegisterInput)({
+        username: "username",
+        email: "email@email.com",
+        password: "password",
+        confirmPassword: "password"
+    });
     expect(`${valid}`).toMatch(/[true]/);
 });

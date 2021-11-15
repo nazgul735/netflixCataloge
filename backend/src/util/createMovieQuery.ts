@@ -1,8 +1,14 @@
+export interface createMovieQueryInterface{
+  title:string|any,
+  genre:string|any, 
+  fromYear:number|any, 
+  toYear:number|any
+}
 export function createMovieQuery(
-  title: string,
-  genre: string, 
-  fromYear:number, 
-  toYear:number
+  {title,
+  genre, 
+  fromYear, 
+  toYear}:createMovieQueryInterface
   ) {
   let query:any = {}; //not too happy about this part
   if (title) {

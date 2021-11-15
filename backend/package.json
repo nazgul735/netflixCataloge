@@ -11,6 +11,8 @@
   },
   "keywords": [],
   "dependencies": {
+    "@babel/preset-flow": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
     "@types/graphql": "^14.5.0",
     "@types/jest": "^27.0.2",
     "apollo-server": "^3.5.0",

@@ -4,6 +4,7 @@ import { mongoDBURL } from "./config";
 import { resolvers } from "./resolvers/resolvers";
 import { typeDefs } from "./resolvers/typeDefs";
 //npx tsc; node dist/app.js
+
 const startServer = async (): Promise<void> => {
     const server = new ApolloServer({
       typeDefs,
@@ -16,7 +17,7 @@ const startServer = async (): Promise<void> => {
       return server.listen({port:4000});
       })
     .then(({ url }) => {
-      console.log(`💀  Server ready at ${url}`);
+      console.log(`Server ready at ${url}`);
     })
     .catch(err => {
       console.error(err.reason)

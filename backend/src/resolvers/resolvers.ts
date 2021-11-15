@@ -63,10 +63,10 @@ export const resolvers = {
         // Validate user data
         try {
             const { valid, errors } = validateRegisterInput(
-            username,
-            email,
-            password,
-            confirmPassword
+            {username:username,
+            email:email,
+            password:password,
+            confirmPassword:confirmPassword}
             );
             if (!(username||email||password||confirmPassword)) {
             throw new Error("You must provide username, email and password.");
@@ -174,7 +174,7 @@ export const resolvers = {
         },
         getMovies: async function(_:unknown, {title, genre, fromYear, toYear, limit, offset}:movieInterface) {
             try {
-                let query = createMovieQuery(title, genre, fromYear, toYear);
+                let query = createMovieQuery({title:title, genre:genre, fromYear:fromYear, toYear:toYear});
                 const allMovies = await Movie.find(query);
                 const movies = await Movie.find(query).limit(limit).skip(offset);
                 const pages = Math.floor(allMovies.length/limit)+1;

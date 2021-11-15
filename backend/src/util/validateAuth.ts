@@ -4,7 +4,7 @@ import { SECRET_KEY  } from "../config";
 import express, { Request } from 'express'
 
 export interface AllObjects {
-  context: Object
+  context: Object;
   req: Request;
   headers: Object;
   authorization: Object;
