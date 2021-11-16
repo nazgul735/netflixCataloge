@@ -1,4 +1,4 @@
-export interface createMovieQueryInterface{
+export interface createMovieQueryInterface{ /*Need "any" as option in order to write tests in js*/
   title:string|any,
   genre:string|any, 
   fromYear:number|any, 

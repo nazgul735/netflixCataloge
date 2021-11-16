@@ -77,9 +77,9 @@ describe("Correctly creates from and to year query", () => {
   });
 })
 
-// describe("Correctly creates arbitrary query", () => {
-//   each(genTestCases(100, getCompleteQuery, () => [randomInt(9999), randomInt(9999)])).test("", ([title, genre, from, to], expected, i) => {
-//     let created  = createMovieQuery({title, genre, from, to});
-//     expect(created).toEqual(expected);
-//   });
-// })
+describe("Correctly creates arbitrary query", () => {
+  each(genTestCases(100, getCompleteQuery, () => [randomInt(9999), randomInt(9999)])).test("", ([title, genre, from, to], expected, i) => {
+    let created  = createMovieQuery({title, genre, from, to});
+    expect(created).toEqual(expected);
+  });
+})
