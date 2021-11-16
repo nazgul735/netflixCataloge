@@ -23,19 +23,6 @@ const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const apollo_server_1 = require("apollo-server");
 const createMovieQuery_1 = require("../util/createMovieQuery");
-// type Review = {
-//     rating : number,
-//     review : string,
-//     movieID : string,
-// }
-// type Movie = {
-//     title: string, 
-//     genre:string, 
-//     fromYear:number, 
-//     toYear:number, 
-//     limit:number, 
-//     offset:number
-// }
 function generateToken(_user) {
     return jsonwebtoken_1.default.sign({
         id: _user.id,
@@ -43,6 +30,7 @@ function generateToken(_user) {
         username: _user.username
     }, config_js_1.SECRET_KEY, { expiresIn: '1h' });
 }
+//Brukes ikke direkte i kode men blir graphQL blir typa deretter i typedefs
 exports.resolvers = {
     Mutation: {
         //Mutation for creating a new review

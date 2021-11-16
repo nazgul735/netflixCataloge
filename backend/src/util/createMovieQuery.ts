@@ -1,18 +1,34 @@
 export interface createMovieQueryInterface{ /*Need "any" as option in order to write tests in js*/
-  title:string|any,
-  genre:string|any, 
-  fromYear:number|any, 
-  toYear:number|any
+  title:string,
+  genre:string, 
+  fromYear:number, 
+  toYear:number
 }
+
+type yearType = {
+  "$lte": string,
+  "$gte": string
+}
+type titleType = {
+  "$regex": string |undefined
+  "$options": string|undefined
+}
+type queryType = {
+  title: titleType|undefined
+  genres: string|undefined
+  year: yearType|undefined
+}
+
 export function createMovieQuery(
   {title,
   genre, 
   fromYear, 
   toYear}:createMovieQueryInterface
   ) {
-  let query:any = {}; //not too happy about this part
+    //let query types be undefined as they´re not set
+  let query:queryType = {title:undefined, genres:undefined, year:undefined}; 
   if (title) {
-    query.title= {$regex:title, $options:"i"};
+    query.title= {$regex:title, $options: "i"};
     console.log(query)
   }
   if (genre) {

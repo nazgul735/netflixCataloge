@@ -5,7 +5,8 @@ export interface validateRegisterInputInterface{
     confirmPassword:string
 }
 export function validateRegisterInput(
-    {username,
+    {
+    username,
     email,
     password,
     confirmPassword}:validateRegisterInputInterface

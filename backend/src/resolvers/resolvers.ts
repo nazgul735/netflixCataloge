@@ -13,21 +13,6 @@ import jwt from "jsonwebtoken";
 import { ApolloError, UserInputError } from "apollo-server";
 import { createMovieQuery } from "../util/createMovieQuery";
 
-// type Review = {
-//     rating : number,
-//     review : string,
-//     movieID : string,
-// }
-
-// type Movie = {
-//     title: string, 
-//     genre:string, 
-//     fromYear:number, 
-//     toYear:number, 
-//     limit:number, 
-//     offset:number
-// }
-
 function generateToken(_user:userInterface) {
     return jwt.sign(
         {
@@ -39,7 +24,7 @@ function generateToken(_user:userInterface) {
         { expiresIn: '1h' }
       );
     }
-
+//Brukes ikke direkte i kode men blir graphQL blir typa deretter i typedefs
 export const resolvers = {
     Mutation: {
         //Mutation for creating a new review
