@@ -22,7 +22,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Review = void 0;
 const mongoose = __importStar(require("mongoose"));
 const mongoose_1 = require("mongoose");
-// Set up for Review schema
 const ReviewSchema = new mongoose_1.Schema({
     rating: { type: Number, required: true },
     review: String,

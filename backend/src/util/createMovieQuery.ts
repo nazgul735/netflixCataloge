@@ -1,19 +1,45 @@
-// Util function for creating query object used for filtering movies
-export function createMovieQuery(title: String, genre: String, fromYear: Number, toYear:Number,) {
-    let query = {};
-    if (title) {
-      (query as any).title = {$regex:title, $options:"i"};
-    }
-    if (genre) {
-      (query as any).genres = genre;
-    }
-    if (fromYear && toYear) {
-      if (fromYear > toYear) return query;
-      (query as any).year = {
-        $lte: toYear.toString(),
-        $gte: fromYear.toString()
-      };
-    }
-    return query;
+export interface createMovieQueryInterface{ /*Need "any" as option in order to write tests in js*/
+  title:string,
+  genre:string, 
+  fromYear:number, 
+  toYear:number
+}
+
+// type yearType = {
+//   "$lte": string,
+//   "$gte": string
+// }
+// type titleType = {
+//   "$regex": string |undefined
+//   "$options": string|undefined
+// }
+// type queryType = {
+//   title: titleType|undefined
+//   genres: string|undefined
+//   year: yearType|undefined
+// }
+
+export function createMovieQuery(
+  {title,
+  genre, 
+  fromYear, 
+  toYear}:createMovieQueryInterface
+  ) {
+    //let query types be undefined as they´re not set
+  let query:any = {title:undefined, genres:undefined, year:undefined}; 
+  if (title) {
+    query.title= {$regex:title, $options: "i"};
+    console.log(query)
   }
-  
+  if (genre) {
+    query["genres"] = genre;
+  }
+  if (fromYear && toYear) {
+    query["year"] = {
+      $lte: toYear.toString(),
+      $gte: fromYear.toString()
+    };
+  }
+  return query;
+}
+

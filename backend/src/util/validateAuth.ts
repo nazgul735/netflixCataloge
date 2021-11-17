@@ -1,17 +1,16 @@
 import { AuthenticationError } from 'apollo-server';
 import jwt from 'jsonwebtoken';
 import { SECRET_KEY  } from "../config";
-import express, { Request } from 'express'
+import { Request } from 'express';
 
 export interface AllObjects {
-  context: Object
+  context: Object;
   req: Request;
   headers: Object;
   authorization: Object;
 }
 
 export const validateAuth = (context:AllObjects) => {
-
     const authHeader = context.req.headers.authorization;
     if (authHeader) {
       // Bearer ....

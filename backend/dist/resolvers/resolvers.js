@@ -30,6 +30,7 @@ function generateToken(_user) {
         username: _user.username
     }, config_js_1.SECRET_KEY, { expiresIn: '1h' });
 }
+//Brukes ikke direkte i kode men blir graphQL blir typa deretter i typedefs
 exports.resolvers = {
     Mutation: {
         //Mutation for creating a new review
@@ -51,7 +52,10 @@ exports.resolvers = {
         register: (_, { username, email, password, confirmPassword }) => __awaiter(void 0, void 0, void 0, function* () {
             // Validate user data
             try {
-                const { valid, errors } = (0, validators_1.validateRegisterInput)(username, email, password, confirmPassword);
+                const { valid, errors } = (0, validators_1.validateRegisterInput)({ username: username,
+                    email: email,
+                    password: password,
+                    confirmPassword: confirmPassword });
                 if (!(username || email || password || confirmPassword)) {
                     throw new Error("You must provide username, email and password.");
                 }
@@ -146,7 +150,7 @@ exports.resolvers = {
         getMovies: function (_, { title, genre, fromYear, toYear, limit, offset }) {
             return __awaiter(this, void 0, void 0, function* () {
                 try {
-                    let query = (0, createMovieQuery_1.createMovieQuery)(title, genre, fromYear, toYear);
+                    let query = (0, createMovieQuery_1.createMovieQuery)({ title: title, genre: genre, fromYear: fromYear, toYear: toYear });
                     const allMovies = yield Movies_1.Movie.find(query);
                     const movies = yield Movies_1.Movie.find(query).limit(limit).skip(offset);
                     const pages = Math.floor(allMovies.length / limit) + 1;

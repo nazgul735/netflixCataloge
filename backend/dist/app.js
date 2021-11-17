@@ -26,11 +26,11 @@ const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     });
     mongoose_1.default.connect(config_1.mongoDBURL)
         .then(() => {
-        console.log("Database connected!");
+        console.log("🚀🚀 Database connected");
         return server.listen({ port: 4000 });
     })
         .then(({ url }) => {
-        console.log(`🚀🚀🚀  Server ready at ${url}`);
+        console.log(`Server ready at ${url}`);
     })
         .catch(err => {
         console.error(err.reason);

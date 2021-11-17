@@ -1,6 +1,6 @@
-import { Movie } from "../schemas/Movies";
-import { Review } from "../schemas/Reviews";
-import { User } from "../schemas/Users";
+import { Movie, movieInterface } from "../schemas/Movies";
+import { Review, reviewInterface } from "../schemas/Reviews";
+import { User, userInterface } from "../schemas/Users";
 import { SECRET_KEY } from "../config.js";
 
 import {
@@ -13,30 +13,7 @@ import jwt from "jsonwebtoken";
 import { ApolloError, UserInputError } from "apollo-server";
 import { createMovieQuery } from "../util/createMovieQuery";
 
-type User = {
-    id : string,
-    username: string,
-    email: string,
-    password: string,
-    confirmPassword: string
-  }
-type Review = {
-    rating : number,
-    review : string,
-    movieID : string,
-    contect : Object
-}
-
-type Movie = {
-    title: string, 
-    genre:string, 
-    fromYear:number, 
-    toYear:number, 
-    limit:number, 
-    offset:number
-}
-
-function generateToken(_user:User) {
+function generateToken(_user:userInterface) {
     return jwt.sign(
         {
           id: _user.id,
@@ -47,11 +24,11 @@ function generateToken(_user:User) {
         { expiresIn: '1h' }
       );
     }
-
+//Brukes ikke direkte i kode men blir graphQL blir typa deretter i typedefs
 export const resolvers = {
     Mutation: {
         //Mutation for creating a new review
-        async createReview (_:unknown, {rating, review, movieID}: Review, context:AllObjects) {
+        async createReview (_:unknown, {rating, review, movieID}: reviewInterface, context:AllObjects) {
         // Validate user
         const user = validateAuth(context);
         // If rating or movieID is not given, throw error
@@ -67,14 +44,14 @@ export const resolvers = {
         return reviewDocument;
         },
         
-    register: async (_:unknown, { username, email, password, confirmPassword }:User) => {
+    register: async (_:unknown, { username, email, password, confirmPassword }:userInterface) => {
         // Validate user data
         try {
             const { valid, errors } = validateRegisterInput(
-            username,
-            email,
-            password,
-            confirmPassword
+            {username:username,
+            email:email,
+            password:password,
+            confirmPassword:confirmPassword}
             );
             if (!(username||email||password||confirmPassword)) {
             throw new Error("You must provide username, email and password.");
@@ -116,7 +93,7 @@ export const resolvers = {
     Query: {
         hello: () => "Hello world",
 
-        getMovieByID: async function (_:unknown, { movieID }:Review) {
+        getMovieByID: async function (_:unknown, { movieID }:reviewInterface) {
         try {
             const movie = await Movie.findById({ _id: movieID });
 
@@ -130,7 +107,7 @@ export const resolvers = {
             throw new ApolloError("error");
         }
         },
-        login: async (_:unknown, { username, password }:User) => {
+        login: async (_:unknown, { username, password }:userInterface) => {
             try {
               const { errors, valid } = validateLoginInput(username, password);
               if (!(username && password)) {
@@ -164,7 +141,7 @@ export const resolvers = {
               throw new ApolloError("Couldn't generate token #154");
             }
           },
-            getReviewsByMovie: async function (_:unknown, { movieID }:Review) {
+            getReviewsByMovie: async function (_:unknown, { movieID }:reviewInterface) {
             try {
                 // Sort by newest posts
                 const reviews = await Review.find({ movieID }).sort({ createdAt: -1 });
@@ -180,9 +157,9 @@ export const resolvers = {
                 throw new ApolloError("No review #170");
             }
         },
-        getMovies: async function(_:unknown, {title, genre, fromYear, toYear, limit, offset}:Movie) {
+        getMovies: async function(_:unknown, {title, genre, fromYear, toYear, limit, offset}:movieInterface) {
             try {
-                let query = createMovieQuery(title, genre, fromYear, toYear);
+                let query = createMovieQuery({title:title, genre:genre, fromYear:fromYear, toYear:toYear});
                 const allMovies = await Movie.find(query);
                 const movies = await Movie.find(query).limit(limit).skip(offset);
                 const pages = Math.floor(allMovies.length/limit)+1;
