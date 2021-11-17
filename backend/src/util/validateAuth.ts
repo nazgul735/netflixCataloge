@@ -1,7 +1,7 @@
 import { AuthenticationError } from 'apollo-server';
 import jwt from 'jsonwebtoken';
 import { SECRET_KEY  } from "../config";
-import express, { Request } from 'express';
+import { Request } from 'express';
 
 export interface AllObjects {
   context: Object;

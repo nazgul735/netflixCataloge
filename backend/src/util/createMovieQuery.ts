@@ -5,19 +5,19 @@ export interface createMovieQueryInterface{ /*Need "any" as option in order to w
   toYear:number
 }
 
-type yearType = {
-  "$lte": string,
-  "$gte": string
-}
-type titleType = {
-  "$regex": string |undefined
-  "$options": string|undefined
-}
-type queryType = {
-  title: titleType|undefined
-  genres: string|undefined
-  year: yearType|undefined
-}
+// type yearType = {
+//   "$lte": string,
+//   "$gte": string
+// }
+// type titleType = {
+//   "$regex": string |undefined
+//   "$options": string|undefined
+// }
+// type queryType = {
+//   title: titleType|undefined
+//   genres: string|undefined
+//   year: yearType|undefined
+// }
 
 export function createMovieQuery(
   {title,
@@ -26,7 +26,7 @@ export function createMovieQuery(
   toYear}:createMovieQueryInterface
   ) {
     //let query types be undefined as they´re not set
-  let query:queryType = {title:undefined, genres:undefined, year:undefined}; 
+  let query:any = {title:undefined, genres:undefined, year:undefined}; 
   if (title) {
     query.title= {$regex:title, $options: "i"};
     console.log(query)
