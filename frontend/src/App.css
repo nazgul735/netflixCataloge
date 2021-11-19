@@ -1,0 +1,119 @@
+.grid-container {
+  display: grid;
+  grid-gap: 40px;
+  justify-content: center;
+  grid-template-columns: auto auto auto;
+  grid-template-areas:
+    "title title title"
+    "underitle underitle underitle"
+    "pagination pagination pagination";
+}
+
+@media only screen and (max-width: 800px) {
+  
+  .grid-container{
+    display: grid;
+    grid-gap: 40px;
+    justify-content: center;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "title title"
+    "underitle underitle"
+    "pagination pagination";
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  
+  .grid-container{
+    display: grid;
+    grid-gap: 40px;
+    justify-content: center;
+    grid-template-columns: auto;
+    grid-template-areas:
+    "title"
+    "underitle"
+    "pagination";
+  }
+  .grid-item{
+    margin: 0 auto;
+    justify-content: center;
+  }
+}
+
+
+
+
+svg {
+  align-content: center;
+  justify-self: center;
+}
+
+.title {
+  grid-area: title;
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.underTitle {
+  grid-area: underitle;
+  color: #d81f27;
+}
+
+.pagination {
+  grid-area: pagination;
+  justify-self: center;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+body {
+  background-color: #f9f1f0;
+}
+
+h1 {
+  color: rgb(0, 0, 0);
+}
+
+p{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

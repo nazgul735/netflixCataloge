@@ -1,0 +1,29 @@
+image: node:latest
+
+stages:
+  - build
+  - test
+
+build:
+  before_script:
+      - cd backend  
+  stage: build
+  script:
+    - npm install
+  artifacts:
+    expire_in: 1 days
+    when: on_success
+
+test:backend:   
+    stage: test
+    coverage: /backend/
+    dependencies:
+        - build
+    before_script:
+      - cd backend
+      - yarn add --dev jest
+    script:
+        - npm run test
+
+
+

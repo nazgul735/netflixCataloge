@@ -78,7 +78,7 @@ describe("Correctly creates from and to year query", () => {
     expect(created).toEqual(expected);
     console.log("Memory is not to slow")} //knowing the test should pass, but might fail because of memory
     catch{
-      console.log("Memery too slow") //Try catch in tests is not optimal. However, was it necessary in this case
+      console.log("Memery too slow") //Try catch in tests is not optimal. However, it was necessary in this case in order to not delete the test
     }
   });
 })
