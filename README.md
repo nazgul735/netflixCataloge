@@ -10,13 +10,13 @@
 
 <div align="center">
 
-<h3 align="center">Project 4 alternative B</h3>
+<h1>Project 4</h1>
+<h2>Alternative B</h2>
 
-  <p align="center">
-    The fourth project created individually by a groupmember of group 38. 
+  <p>
+    The fourth project is created individually
     <br />
-    <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/individual/sebasv-4b"><strong>Explore the docs »</strong></a>
-    <br />
+    <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/individual/sebasv-4b"><strong>Explore the docs»</strong></a>
     <br />
     <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/individual/sebasv-4b/-/issues">Issues</a>
     ·
@@ -33,6 +33,10 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#refactored-backend">Refactored backend</a></li>
+        <li><a href="#experimental-decoration">Experimental decoration</a></li>
+        <li><a href="#tests-for-project-4">Tests for project 4</a></li>
+        <li><a href="#typing">Typing</a></li>
         <li><a href="#built-with">Built With</a></li>
         <li><a href="#technologies">Technologies</a></li>
         <li><a href="#functionalities">Functionalities</a></li>
@@ -78,25 +82,43 @@
 
 ## About project 4
 
-As me and my group invested above average time on perfecting project 3 did I face some challenges finding potential improvements for the project. Except rewriting backend from JavaScript to TypeScript.
+As me and my group invested extra time on perfecting project 3 did I face some challenges finding potential improvements for the project. Except refactoring backend from JavaScript to TypeScript. However, I was quite motivated to refactoring backend as I figuered this would be an effective approch to learn TypeScript even better. I also decided to choose a project which offered to let me focus on backend only. 
 
 ### Refactored backend
 
-The backend itself offered a great amount of more advanced components such as [authorisation](https://gitlab.stud.idi.ntnu.no/it2810-h21/individual/sebasv-4b/-/blob/master/backend/src/util/validateAuth.ts) validation for users to register and login in order to user all features our product offers, such as creating new reviews. The converting did therefore charge a fair amount of time consumption. However, the final product wasn´t the main reason I spent this much time. The first edition of the project was the main time consumer.
+The backend itself offered a great amount of more advanced components, such as [authorisation](https://gitlab.stud.idi.ntnu.no/it2810-h21/individual/sebasv-4b/-/blob/master/backend/src/util/validateAuth.ts) validation for users to register and login, to enable all features our product offers, such as creating new reviews. The converting did therefore charge a fair amount of time. However, the final product wasn´t the main reason I spent this much of time. The first edition of the project was the main time consumer.
 
 ### Experimental decoration
 
-At the end of project 3 did another member and myself begin refactoring the whole backend by using an experimental syntax of TypeScript with TC39. This sort of syntax is not fully ratified into the JavaScript specification but may offer more advanced features as it´s offered by a lower level of documentation and problem-solving forums. This also means that the implementation version in TypeScript may differ from the implementation in JavaScript when it it decided by TC39. Even though, I managed to refactor the whole backend with third party libraries as TypeGoose and make it compile did a few, foreign errors occur. After searching and asking for help by several experts was, I forced to accept defeat. I had to start all over again by doing it properly in a more common manner. Even with failure did I learn a lot trying to use more advanced methods and won´t suggest it should be regretted. I may try continuing completing the main project later this year. If you would like to know more about the experimental decoration, have a look: [Link]().
+At the end of project 3 did another member and myself begin refactoring the whole backend by using an experimental syntax of TypeScript with TC39. This sort of syntax is not fully ratified into the JavaScript specification but may offer more advanced features as it´s offered by a lower level of documentation and problem-solving forums. This also means that the implementation version in TypeScript may differ from the implementation in JavaScript when it it decided by TC39. Even though, I managed to refactor the whole backend with third party libraries as TypeGoose and make it compile did a few, foreign errors occur. Below is a screenshot of one of the schemas with experimental decoration and props from TypeGoose.
+
+<br/>
+
+<img src="docs/images/experimental_schema.png" alt="Searching" width="300">
+
+<br/>
+
+ After searching and asking for help by several experts I had to accept the fact that I couldn't complete the project and started from scratch. I had to start all over again by doing it properly in a more common manner. Even with failure did I learn a lot trying to use more advanced methods and won´t suggest it should be regretted. I may try continuing completing the main project later this year. If reading the code is of desire visit the branch, have a look: [Link](https://gitlab.stud.idi.ntnu.no/it2810-h21/individual/sebasv-4b/-/tree/experimental).
+
 
 ### Tests for project 4
 
-Frontend is mostly tested from project 3. As I mentioned earlier are several unit tests written as well as a detailed cypress test. The whole frontend is therefore well covered already. As the whole frontend is perfected into details did I find it more appropriate to focus on backend. 
+The application is mostly tested from project 3. As I mentioned earlier are several unit tests written as well as a detailed cypress test. The whole code is therefore well covered already, with above 90% jest coverage. I had to rewrite the backend util tests as they met some issues related to the new TypeScript utils they are testing. I also did a few changes to make the tests pointier. I did want to refactor the tests as well but after discussing this with a student assistant did, we conclude that it would be sort of a wate of time as I already have proven my refactoring skills.
 
 ### Typing 
 
 The new backend is mostly typed properly as a TypeScript application should. However are a few elements typed as "any", which is someting I strived not to occur. In the resolvers, for example, does the mutation of registration of new users split in the document object of the database, id and the token. I didn't manage to type these for some reason. I spend fair amount of time to figure it out and finally gave it up for any-type. 
+
+<br/>
+
+<img src="docs/images/resdoc.png" alt="Searching" width="450">
+
+<br/>
+
+Another part I'm not happy about are the util typings. I intended to do as the screenshot below shows, which were working. However, the tests failed as $ in a type resulted with *unknown javascript syntax error* in the test files, as they are JavaScript. 
+
 </br>
-Another example 
+<img src="docs/images/betterTypes.png" alt="Searching" width="450">
 
 </br>
 
@@ -113,6 +135,7 @@ Another example
 
 <div align="right">(<a href="#top">back to top</a>)</div>
 
+### *below is also related project 3*
 ### Technologies
 
 Some technologies were required to use for project 3 and are therefore pre decided. With that is the interface based on react syntax. The project itself is initialized with create-react-app, npx create-react-app, implemented in TypeScript.
@@ -274,11 +297,10 @@ You may now choose which test case to run in cypress' browser
    cd frontend
    ```
 2. Test frontend
-   ````sh
+   ```sh
     npm test
     ```
    <div align="right">(<a href="#top">back to top</a>)</div>
-   ````
 
 <!-- GETTING STARTED -->
 
@@ -310,15 +332,20 @@ Install correct node version through your terminal.
 
 </br>
 
-#### Run backend
+#### Run backend (Relevant for project 4)
 
 1. Navigate to backend
    ```sh
    cd backend
    ```
-2. Run backend
+2. Install NPM packages
    ```sh
-   npm start
+   npm install
+   ```
+
+3. Run backend
+   ```sh
+   npx tsc; node dist/app.js
    ```
 
 #### Run frontend
@@ -375,7 +402,7 @@ As a user should registration and login be offered. In upper right corner is the
 
 _For more info, please refere to [Documentation](https://gitlab.stud.idi.ntnu.no/it2810-h21/team-38/prosjekt-3/-/tree/master/docs)_
 
-<div align="right">(<a href="#top">back to top</a>)</div>
+<br/>
 
 <!-- CONTACT -->
 
@@ -398,21 +425,24 @@ Project Link: [Project4](https://gitlab.stud.idi.ntnu.no/it2810-h21/individual/s
 - [Typegoose Github](https://github.com/typegoose/typegoose)
 - [TypeGraphQL](https://typegraphql.com/)
 - [Decorator](https://www.typescriptlang.org/docs/handbook/decorators.html)
-- []()
-- []()
-- []()
-- []()
+
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<div align="center">
+  <h3>Sebastian Veum</h3>
+</div>
 
 <div align="right">(<a href="#top">back to top</a>)</div>
-
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<div align="center">
-
-<h3 align="center">Sebastian Veum</h3>
-</div>
