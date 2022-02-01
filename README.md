@@ -10,8 +10,8 @@
 
 <div align="center">
 
-<h1>Project 4</h1>
-<h2>Alternative B</h2>
+<h1>Netflix Cataloge</h1>
+<h2>by Sebastian Veum</h2>
 
   <p>
     The fourth project is created individually
@@ -80,17 +80,17 @@
 
 </br>
 
-## About project 4
+## About the Project
 
-As me and my group invested extra time on perfecting project 3 did I face some challenges finding potential improvements for the project. Except refactoring backend from JavaScript to TypeScript. However, I was quite motivated to refactoring backend as I figuered this would be an effective approch to learn TypeScript even better. I also decided to choose a project which offered to let me focus on backend only. 
+As me and my group invested extra time on perfecting the project did I face some challenges finding potential improvements for the project. Except refactoring backend from JavaScript to TypeScript. However, I was quite motivated to refactoring backend as I figuered this would be an effective approch to learn TypeScript even better. I also decided to choose a project which offered to let me focus on backend only. 
 
 ### Refactored backend
 
-The backend itself offered a great amount of more advanced components, such as [authorisation](https://gitlab.stud.idi.ntnu.no/it2810-h21/individual/sebasv-4b/-/blob/master/backend/src/util/validateAuth.ts) validation for users to register and login, to enable all features our product offers, such as creating new reviews. The converting did therefore charge a fair amount of time. However, the final product wasn´t the main reason I spent this much of time. The first edition of the project was the main time consumer.
+The backend itself offered a great amount of more advanced components, such as [authorisation](https://github.com/nazgul735/netflixCataloge/blob/master/backend/src/util/validateAuth.ts) validation for users to register and login, to enable all features our product offers, such as creating new reviews. The converting did therefore charge a fair amount of time. However, the final product wasn´t the main reason I spent this much of time. The first edition of the project was the main time consumer.
 
 ### Experimental decoration
 
-At the end of project 3 did another member and myself begin refactoring the whole backend by using an experimental syntax of TypeScript with TC39. This sort of syntax is not fully ratified into the JavaScript specification but may offer more advanced features as it´s offered by a lower level of documentation and problem-solving forums. This also means that the implementation version in TypeScript may differ from the implementation in JavaScript when it it decided by TC39. Even though, I managed to refactor the whole backend with third party libraries as TypeGoose and make it compile did a few, foreign errors occur. Below is a screenshot of one of the schemas with experimental decoration and props from TypeGoose.
+At the end of the project did another member and myself begin refactoring the whole backend by using an experimental syntax of TypeScript with TC39. This sort of syntax is not fully ratified into the JavaScript specification but may offer more advanced features as it´s offered by a lower level of documentation and problem-solving forums. This also means that the implementation version in TypeScript may differ from the implementation in JavaScript when it it decided by TC39. Even though, I managed to refactor the whole backend with third party libraries as TypeGoose and make it compile did a few, foreign errors occur. Below is a screenshot of one of the schemas with experimental decoration and props from TypeGoose.
 
 <br/>
 
@@ -98,12 +98,12 @@ At the end of project 3 did another member and myself begin refactoring the whol
 
 <br/>
 
- After searching and asking for help by several experts I had to accept the fact that I couldn't complete the project and started from scratch. I had to start all over again by doing it properly in a more common manner. Even with failure did I learn a lot trying to use more advanced methods and won´t suggest it should be regretted. I may try continuing completing the main project later this year. If reading the code is of desire visit the branch, have a look: [Link](https://gitlab.stud.idi.ntnu.no/it2810-h21/individual/sebasv-4b/-/tree/experimental).
+ After searching and asking for help by several experts I had to accept the fact that I couldn't complete the project and started from scratch. I had to start all over again by doing it properly in a more common manner. Even with failure did I learn a lot trying to use more advanced methods and won´t suggest it should be regretted. I may try continuing completing the main project later this year. If reading the code is of desire visit the branch, have a look: [Link](https://github.com/nazgul735/netflixCataloge/tree/experimental).
 
 
-### Tests for project 4
+### Tests for Project 
 
-The application is mostly tested from project 3. As I mentioned earlier are several unit tests written as well as a detailed cypress test. The whole code is therefore well covered already, with above 90% jest coverage. I had to rewrite the backend util tests as they met some issues related to the new TypeScript utils they are testing. I also did a few changes to make the tests pointier. I did want to refactor the tests as well but after discussing this with a student assistant did, we conclude that it would be sort of a wate of time as I already have proven my refactoring skills.
+The application is mostly tested from the project. As I mentioned earlier are several unit tests written as well as a detailed cypress test. The whole code is therefore well covered already, with above 90% jest coverage. I had to rewrite the backend util tests as they met some issues related to the new TypeScript utils they are testing. I also did a few changes to make the tests pointier. I did want to refactor the tests as well but after discussing this with a student assistant did, we conclude that it would be sort of a wate of time as I already have proven my refactoring skills.
 
 ### Typing 
 
@@ -135,10 +135,10 @@ Another part I'm not happy about are the util typings. I intended to do as the s
 
 <div align="right">(<a href="#top">back to top</a>)</div>
 
-### *below is also related project 3*
+
 ### Technologies
 
-Some technologies were required to use for project 3 and are therefore pre decided. With that is the interface based on react syntax. The project itself is initialized with create-react-app, npx create-react-app, implemented in TypeScript.
+Some technologies were required to use for the project and are therefore pre decided. With that is the interface based on react syntax. The project itself is initialized with create-react-app, npx create-react-app, implemented in TypeScript.
 
 Regarding the GraphQL database it was clearly Apollo we wanted to use as the service provides a vast open-source library that is extremely helpful in implementing GraphQL for JavaScript applications, as the backend is written in js.
 
@@ -410,7 +410,7 @@ _For more info, please refere to [Documentation](https://gitlab.stud.idi.ntnu.no
 
 Sebastian - [@github_nazgul735](https://github.com/nazgul735) - sebasv@stud.ntnu.no
 
-Project Link: [Project4](https://gitlab.stud.idi.ntnu.no/it2810-h21/individual/sebasv-4b)
+Project Link: [Project](https://github.com/nazgul735/netflixCataloge)
 
 <!-- ACKNOWLEDGMENTS -->
 
