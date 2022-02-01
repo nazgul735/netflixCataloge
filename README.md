@@ -34,7 +34,7 @@
       <ul>
         <li><a href="#refactored-backend">Refactored backend</a></li>
         <li><a href="#experimental-decoration">Experimental decoration</a></li>
-        <li><a href="#tests-for-project-4">Tests for project 4</a></li>
+        <li><a href="#tests-for-the-project">Tests for the project</a></li>
         <li><a href="#typing">Typing</a></li>
         <li><a href="#built-with">Built With</a></li>
         <li><a href="#technologies">Technologies</a></li>
