@@ -11,10 +11,9 @@
 <div align="center">
 
 <h1>Netflix Cataloge</h1>
-<h2>by Sebastian Veum</h2>
 
   <p>
-    The fourth project is created individually
+    by Sebastian Veum
     <br />
     <a href="https://gitlab.stud.idi.ntnu.no/it2810-h21/individual/sebasv-4b"><strong>Explore the docs»</strong></a>
     <br />
